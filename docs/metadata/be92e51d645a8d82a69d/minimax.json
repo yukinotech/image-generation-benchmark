@@ -1,0 +1,27 @@
+{
+  "case_id": "be92e51d645a8d82a69d",
+  "prompt": "中国水墨海报，画面左侧是一棵老松，横枝伸向右侧，树下两只丹顶鹤在起舞。宣纸上保留大片空白，用竖排毛笔字写清楚「松鹤延年」四个字。\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 4096,
+  "height": 4096,
+  "pixels": 16777216,
+  "model": {
+    "id": "minimax",
+    "label": "MiniMax H3 Image Pruned INT8",
+    "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+    "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+    "vae": "minimax_h3_image_vae_fp16.safetensors",
+    "steps": 6,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_minimax_h3_image_t2i",
+    "execution_mode": "staged",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

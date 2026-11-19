@@ -1,0 +1,35 @@
+{
+  "case_id": "0f8ea0eaaee5938d61d6",
+  "prompt": "Photograph of a young Asian woman with long brown hair and soft bangs sitting on a white bench in a lush green garden. She wears a white frilled Victorian-style dress layered over a blue long-sleeve shirt, white thigh-high stockings, and black Mary Jane shoes. In her right hand she holds a green patterned umbrella resting against her shoulder; her left hand reaches upward to gently touch a white hydrangea bloom on a leafy tree positioned in the upper left of the frame. Fair, delicate skin and a gentle smile complete her expression as she looks toward the camera. Soft natural daylight illuminates the scene, highlighting the fine textures of the lace and fabric against the verdant garden. Shallow depth of field keeps the woman and the nearest hydrangea sharp while the surrounding trees and grass blur into a soft green backdrop, creating a romantic, vintage atmosphere.\n",
+  "ratio": "9:16",
+  "seed": "1404791722306368800",
+  "width": 1536,
+  "height": 2752,
+  "pixels": 4227072,
+  "model": {
+    "id": "qwen21",
+    "label": "Qwen-Image 2.1 INT8",
+    "unet": "qwen_image_2.1_int8_convrot.safetensors",
+    "clip": "qwen3vl_8b_int8_convrot.safetensors",
+    "vae": "qwen_image_2.1_vae_bf16.safetensors",
+    "steps": 25,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_qwen_image_2_1_t2i",
+    "execution_mode": "single",
+    "workflow_options": {
+      "TextEncodeQwenImage21": {
+        "resolution": 1024,
+        "negative_prompt": ""
+      },
+      "QwenImage21Cache": {
+        "device": "auto",
+        "dtype": "default"
+      },
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

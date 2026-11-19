@@ -1,0 +1,141 @@
+{
+  "case_id": "731c65b6ec7e76424d57",
+  "prompt": "制作 3:2 横版手绘工业概念板，主题“山顶观星台｜发条星图馆”。白色纸面、细黑墨线、浅灰阴影，只在齿圈、铜管与指示灯上点少量赭黄和青绿。主体居中，用前右侧略俯视的四分之三视角展示同一座两层圆形观测建筑。沿正面切去约四分之一外壳，切口用加粗剖面线和斜线排纹。后侧弧形外墙保留，屋顶圆顶只开一条狭槽，槽口朝右上方的星空示意方向。\n\n底层中央有一张圆形手摇星图台，桌面仅显示刻环和三枚刻度指针。手摇曲柄在台面侧方，曲柄旁画一条淡橙色动力路径，从齿盘到沿外墙布设的竖向传动轴，再到穹顶下方的齿圈。底层右侧靠墙是沿弧面上升的楼梯，楼梯顶端必须接到二层平台，不能停在断墙或穿过桌面。二层平台承载一架带三脚底座的短筒望远镜，镜筒以仰角指向圆顶狭槽。平台中央留一条可行走的环形通道，正面开口处用剖面线表示被切除的地板，不添加护栏盖住切口。\n\n主图周围配四幅未上色的局部线稿。左上画圆顶狭槽关闭和开启两个小状态，用同一组弧形导轨连接。右上画俯视平面，标出切除象限，楼梯与主图在同一侧。左下画曲柄和齿盘，转向箭头清楚。右下画望远镜底座和仰俯转轴，镜筒两端大小和主体一致。用四条不交叉的细引线对应主图，标签只用“圆顶狭槽”“切除区域”“手摇齿盘”“仰俯转轴”。保留探索性断线与少量铅笔辅助线。无照片材质、无环境建筑、无人物、无虚构尺寸标尺。\n",
+  "ratio": "3:2",
+  "seed": "14947802011230388597",
+  "models": [
+    {
+      "id": "moss",
+      "label": "MOSS-Image SFT INT8",
+      "width": 1248,
+      "height": 832,
+      "pixels": 1038336,
+      "unet": "Moss_image\\moss_image_sft_int8_convrot.safetensors",
+      "clip": "qwen3.5_9b_int8_convrot.safetensors",
+      "vae": "flux2-vae_small.safetensors",
+      "steps": 25,
+      "cfg": 2.5,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+      "template": "image_moss_image_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "krea2",
+      "label": "Krea 2 Turbo INT8",
+      "width": 1248,
+      "height": 832,
+      "pixels": 1038336,
+      "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+      "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+      "vae": "qwen_image_vae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_krea2_turbo_t2i_int8",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax H3 Image Pruned INT8",
+      "width": 5024,
+      "height": 3360,
+      "pixels": 16880640,
+      "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_minimax_h3_image_t2i",
+      "execution_mode": "staged",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "qwen21",
+      "label": "Qwen-Image 2.1 INT8",
+      "width": 2528,
+      "height": 1696,
+      "pixels": 4287488,
+      "unet": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 25,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_qwen_image_2_1_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "TextEncodeQwenImage21": {
+          "resolution": 1024,
+          "negative_prompt": ""
+        },
+        "QwenImage21Cache": {
+          "device": "auto",
+          "dtype": "default"
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "z-image",
+      "label": "Z-Image Turbo BF16",
+      "width": 1248,
+      "height": 832,
+      "pixels": 1038336,
+      "unet": "z_image_turbo_bf16.safetensors",
+      "clip": "qwen_3_4b.safetensors",
+      "vae": "ae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "template": "image_z_image_turbo",
+      "execution_mode": "single",
+      "workflow_options": {
+        "ModelSamplingAuraFlow": {
+          "shift": 3.0
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "flux2-9b",
+      "label": "FLUX.2 Klein 9B FP8",
+      "width": 1248,
+      "height": 832,
+      "pixels": 1038336,
+      "unet": "flux-2-klein-9b-fp8.safetensors",
+      "clip": "qwen_3_8b_fp8mixed.safetensors",
+      "vae": "flux2-vae.safetensors",
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "Flux2Scheduler",
+      "template": "image_flux2_klein_text_to_image",
+      "execution_mode": "single"
+    }
+  ]
+}

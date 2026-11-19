@@ -1,0 +1,22 @@
+{
+  "case_id": "be92e51d645a8d82a69d",
+  "prompt": "中国水墨海报，画面左侧是一棵老松，横枝伸向右侧，树下两只丹顶鹤在起舞。宣纸上保留大片空白，用竖排毛笔字写清楚「松鹤延年」四个字。\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 1024,
+  "height": 1024,
+  "pixels": 1048576,
+  "model": {
+    "id": "flux2-9b",
+    "label": "FLUX.2 Klein 9B FP8",
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "steps": 4,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "Flux2Scheduler",
+    "template": "image_flux2_klein_text_to_image",
+    "execution_mode": "single"
+  }
+}

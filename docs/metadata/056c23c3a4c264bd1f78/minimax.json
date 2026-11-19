@@ -1,0 +1,27 @@
+{
+  "case_id": "056c23c3a4c264bd1f78",
+  "prompt": "a photo of a carrot left of an orange\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 4096,
+  "height": 4096,
+  "pixels": 16777216,
+  "model": {
+    "id": "minimax",
+    "label": "MiniMax H3 Image Pruned INT8",
+    "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+    "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+    "vae": "minimax_h3_image_vae_fp16.safetensors",
+    "steps": 6,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_minimax_h3_image_t2i",
+    "execution_mode": "staged",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

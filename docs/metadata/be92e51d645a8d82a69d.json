@@ -1,0 +1,141 @@
+{
+  "case_id": "be92e51d645a8d82a69d",
+  "prompt": "中国水墨海报，画面左侧是一棵老松，横枝伸向右侧，树下两只丹顶鹤在起舞。宣纸上保留大片空白，用竖排毛笔字写清楚「松鹤延年」四个字。\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "models": [
+    {
+      "id": "moss",
+      "label": "MOSS-Image SFT INT8",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "Moss_image\\moss_image_sft_int8_convrot.safetensors",
+      "clip": "qwen3.5_9b_int8_convrot.safetensors",
+      "vae": "flux2-vae_small.safetensors",
+      "steps": 25,
+      "cfg": 2.5,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+      "template": "image_moss_image_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "krea2",
+      "label": "Krea 2 Turbo INT8",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+      "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+      "vae": "qwen_image_vae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_krea2_turbo_t2i_int8",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax H3 Image Pruned INT8",
+      "width": 4096,
+      "height": 4096,
+      "pixels": 16777216,
+      "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_minimax_h3_image_t2i",
+      "execution_mode": "staged",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "qwen21",
+      "label": "Qwen-Image 2.1 INT8",
+      "width": 2048,
+      "height": 2048,
+      "pixels": 4194304,
+      "unet": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 25,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_qwen_image_2_1_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "TextEncodeQwenImage21": {
+          "resolution": 1024,
+          "negative_prompt": ""
+        },
+        "QwenImage21Cache": {
+          "device": "auto",
+          "dtype": "default"
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "z-image",
+      "label": "Z-Image Turbo BF16",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "z_image_turbo_bf16.safetensors",
+      "clip": "qwen_3_4b.safetensors",
+      "vae": "ae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "template": "image_z_image_turbo",
+      "execution_mode": "single",
+      "workflow_options": {
+        "ModelSamplingAuraFlow": {
+          "shift": 3.0
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "flux2-9b",
+      "label": "FLUX.2 Klein 9B FP8",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "flux-2-klein-9b-fp8.safetensors",
+      "clip": "qwen_3_8b_fp8mixed.safetensors",
+      "vae": "flux2-vae.safetensors",
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "Flux2Scheduler",
+      "template": "image_flux2_klein_text_to_image",
+      "execution_mode": "single"
+    }
+  ]
+}

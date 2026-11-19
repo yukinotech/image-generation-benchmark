@@ -1,0 +1,35 @@
+{
+  "case_id": "b0afcb25ab5e5b76a58c",
+  "prompt": "机甲CAD绘制16:9中文轮腿配送机器人概念图，包含同一机器人的站立、下蹲侧视图，三维图及动力轴表，注明“虚构结构研究”。车体长500、宽360、高180毫米；四个角各装一条二关节腿，每腿末端一个直径120毫米的主动轮。腿关节共8个，轮轴电机共4个，合计12个受控旋转轴。四条腿标FL、FR、RL、RR，各自的上、下关节编号1和2，轮轴编号W；缩写中的左右以机器人自身为准。站立姿态车体顶面离地560毫米，下蹲姿态为440毫米，用同一地平线画出降低120毫米的差值。两幅图只改变关节角度，车体、轮径和连杆长度保持一致。前面板只有一台深度相机，车体上方只有一个封闭货箱；货箱在两种姿态中保持水平。用对照表区分8个腿部关节与4个驱动轮轴，避免把12个受控轴误画成12条腿或12个轮子。\n",
+  "ratio": "16:9",
+  "seed": "842903453870999653",
+  "width": 2752,
+  "height": 1536,
+  "pixels": 4227072,
+  "model": {
+    "id": "qwen21",
+    "label": "Qwen-Image 2.1 INT8",
+    "unet": "qwen_image_2.1_int8_convrot.safetensors",
+    "clip": "qwen3vl_8b_int8_convrot.safetensors",
+    "vae": "qwen_image_2.1_vae_bf16.safetensors",
+    "steps": 25,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_qwen_image_2_1_t2i",
+    "execution_mode": "single",
+    "workflow_options": {
+      "TextEncodeQwenImage21": {
+        "resolution": 1024,
+        "negative_prompt": ""
+      },
+      "QwenImage21Cache": {
+        "device": "auto",
+        "dtype": "default"
+      },
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

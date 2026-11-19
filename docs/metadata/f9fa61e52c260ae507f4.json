@@ -1,0 +1,141 @@
+{
+  "case_id": "f9fa61e52c260ae507f4",
+  "prompt": "制作 4:3 中文横版数据故事板，标题“社区图书馆：一天的客流”，副标题“虚构观测数据｜四时段对照”。纯白背景，藏蓝代表“入馆”，珊瑚橙代表“离馆”，浅灰用于网格线。顶部放三个总览数字“累计入馆 120 人”“累计离馆 120 人”“最高时段末在馆 40 人”。中间左侧画分组柱图，右侧画时段末在馆人数折线。两张图横轴都按“09–11”“11–13”“13–15”“15–17”排列，横坐标对齐各自的数据点并保留顺序。\n\n用下列数据制作图形与底部校验表。每条的顺序为“时段，入馆，离馆，时段末在馆”。09–11，30，10，20。11–13，20，15，25。13–15，40，25，40。15–17，30，70，0。开馆前在馆人数为 0。柱图每个时段一蓝一橙，共八根柱，纵轴 0 至 80 人，柱从零起画，柱顶标对应整数。折线从第一时段末的 20 连到 25、40、0，共四个实心圆点，纵轴 0 至 40 人；最后一个点在零线上，第三个点标“最高 40”。开馆前的 0 只在校验表下的说明中出现。\n\n底部校验表有四行数据，列标题为“时段／入馆／离馆／末在馆”，数据与图形一一对应。表右放两个短批注“末在馆 = 上一时段末在馆 + 入馆 − 离馆”和“15–17 离馆多于入馆，闭馆时归零”。不用百分比、拟合曲线、透视柱、渐变阴影或额外数据。中文与数字清楚，图例颜色、表格和总览指标保持一致。输出单张排版成品。\n",
+  "ratio": "4:3",
+  "seed": "14947802011230388597",
+  "models": [
+    {
+      "id": "moss",
+      "label": "MOSS-Image SFT INT8",
+      "width": 1152,
+      "height": 864,
+      "pixels": 995328,
+      "unet": "Moss_image\\moss_image_sft_int8_convrot.safetensors",
+      "clip": "qwen3.5_9b_int8_convrot.safetensors",
+      "vae": "flux2-vae_small.safetensors",
+      "steps": 25,
+      "cfg": 2.5,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+      "template": "image_moss_image_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "krea2",
+      "label": "Krea 2 Turbo INT8",
+      "width": 1152,
+      "height": 864,
+      "pixels": 995328,
+      "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+      "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+      "vae": "qwen_image_vae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_krea2_turbo_t2i_int8",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax H3 Image Pruned INT8",
+      "width": 4736,
+      "height": 3552,
+      "pixels": 16822272,
+      "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_minimax_h3_image_t2i",
+      "execution_mode": "staged",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "qwen21",
+      "label": "Qwen-Image 2.1 INT8",
+      "width": 2400,
+      "height": 1792,
+      "pixels": 4300800,
+      "unet": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 25,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_qwen_image_2_1_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "TextEncodeQwenImage21": {
+          "resolution": 1024,
+          "negative_prompt": ""
+        },
+        "QwenImage21Cache": {
+          "device": "auto",
+          "dtype": "default"
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "z-image",
+      "label": "Z-Image Turbo BF16",
+      "width": 1152,
+      "height": 864,
+      "pixels": 995328,
+      "unet": "z_image_turbo_bf16.safetensors",
+      "clip": "qwen_3_4b.safetensors",
+      "vae": "ae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "template": "image_z_image_turbo",
+      "execution_mode": "single",
+      "workflow_options": {
+        "ModelSamplingAuraFlow": {
+          "shift": 3.0
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "flux2-9b",
+      "label": "FLUX.2 Klein 9B FP8",
+      "width": 1152,
+      "height": 864,
+      "pixels": 995328,
+      "unet": "flux-2-klein-9b-fp8.safetensors",
+      "clip": "qwen_3_8b_fp8mixed.safetensors",
+      "vae": "flux2-vae.safetensors",
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "Flux2Scheduler",
+      "template": "image_flux2_klein_text_to_image",
+      "execution_mode": "single"
+    }
+  ]
+}

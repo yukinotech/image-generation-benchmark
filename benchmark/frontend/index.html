@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ComfyUI · 文生图 Benchmark</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="shell bar-inner">
+      <a class="wordmark" href="./">ComfyUI <span>Benchmark</span></a>
+    </div>
+  </header>
+  <main class="shell">
+    <div class="intro">
+      <div>
+        <h1 id="page-title">文生图模型对比</h1>
+        <p id="page-description">按提示词浏览各模型的生成结果。</p>
+      </div>
+    </div>
+    <section id="resolution-guide" class="resolution-guide" aria-labelledby="resolution-heading">
+      <h2 id="resolution-heading">模型分辨率参考</h2>
+      <p>同组图片使用相同目标画幅、提示词和 Seed。每个模型在同一画幅使用固定尺寸。MiniMax 使用约 16.8 MP，Qwen-Image 2.1 使用原生 2K 预设，其余模型使用约 1 MP。宽高按 32 像素对齐，实际比例可能略有偏差。每张图片的实际尺寸见表格和元信息。</p>
+      <details>
+        <summary>各模型的分辨率建议</summary>
+        <dl>
+          <div><dt>MiniMax H3 Image</dt><dd>原生约 16.8 MP。官方 1:1 示例为 4096 × 4096。<a href="https://blog.comfy.org/p/minimax-h3-image-is-now-available">ComfyUI 说明</a></dd></div>
+          <div><dt>MOSS-Image SFT</dt><dd>官方 SFT 示例为 1024 × 1024，宽高需为 16 的倍数。<a href="https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT">模型卡</a></dd></div>
+          <div><dt>Krea 2 Turbo</dt><dd>官方演示默认 1024 × 1024，也提供 2048 × 2048 预设。官方推理脚本按 16 像素对齐。<a href="https://huggingface.co/spaces/krea/Krea-2/blob/main/app.py">官方演示</a> · <a href="https://github.com/krea-ai/krea-2#usage">推理说明</a></dd></div>
+          <div><dt>Qwen-Image 2.1</dt><dd>原生 2K。官方推荐 1:1 用 2048 × 2048，16:9 用 2752 × 1536，其他画幅也有对应预设。<a href="https://github.com/QwenLM/Qwen-Image-2.1#supported-aspect-ratios">官方预设表</a></dd></div>
+          <div><dt>Z-Image Turbo</dt><dd>官方演示默认 1024 × 1024，并提供其他画幅和分辨率档位。<a href="https://huggingface.co/spaces/Tongyi-MAI/Z-Image-Turbo/blob/main/app.py">官方预设</a></dd></div>
+          <div><dt>FLUX.2 Klein 9B</dt><dd>官方示例为 1024 × 1024。ComfyUI 的 FLUX.2 latent 节点按 16 像素对齐。<a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-9B">模型卡</a> · <a href="https://github.com/Comfy-Org/ComfyUI/blob/master/comfy_extras/nodes_flux.py">节点实现</a></dd></div>
+        </dl>
+      </details>
+    </section>
+    <p id="message" role="status">正在加载对比结果…</p>
+    <div id="workspace" hidden>
+      <a id="back-to-list" class="back-link view-toolbar" hidden>返回对比总览</a>
+      <section id="overview" aria-labelledby="page-title">
+        <div id="overview-toolbar">
+          <div class="panel-top overview-controls">
+            <section id="filters" class="controls" aria-label="对比条件">
+              <label>宽高比<select id="ratio"></select></label>
+            </section>
+            <span id="table-summary" role="status"></span>
+          </div>
+          <div id="table-navigation" class="table-navigation" role="group" aria-label="横向浏览模型列" hidden>
+            <button id="table-left" type="button" aria-label="向左查看模型列" aria-controls="comparison">‹</button>
+            <div id="table-scroll-top" class="table-scroll-top" tabindex="0" aria-label="模型对比表顶部横向滚动条">
+              <div id="table-scroll-track" aria-hidden="true"></div>
+            </div>
+            <button id="table-right" type="button" aria-label="向右查看模型列" aria-controls="comparison">›</button>
+          </div>
+          <div id="table-header-scroll" aria-hidden="true">
+            <div id="table-header-row"></div>
+          </div>
+        </div>
+        <div id="table-scroll" class="table-scroll" tabindex="0" aria-label="模型对比表，可横向滚动">
+          <table id="comparison" aria-label="按提示词和生成条件对比模型">
+            <thead id="comparison-head"></thead>
+            <tbody id="comparison-body"></tbody>
+          </table>
+        </div>
+      </section>
+      <section id="prompt-panel" class="prompt-panel" aria-labelledby="prompt-heading" hidden>
+        <div class="panel-top">
+          <h2 id="prompt-heading">提示词</h2>
+          <button id="copy" type="button">复制原文</button>
+        </div>
+        <pre id="prompt-text" tabindex="0"></pre>
+        <details id="translation" hidden>
+          <summary>完整中文译文</summary>
+          <pre id="translation-text"></pre>
+        </details>
+      </section>
+      <section id="detail-results" class="results" aria-labelledby="results-heading" hidden>
+        <div class="panel-top results-top">
+          <div>
+            <h2 id="results-heading">生成结果</h2>
+            <p id="case-summary"></p>
+          </div>
+        </div>
+        <fieldset id="models"><legend>显示模型</legend></fieldset>
+        <div id="grid" class="grid"></div>
+      </section>
+    </div>
+  </main>
+  <dialog id="metadata-dialog" aria-labelledby="metadata-title">
+    <div class="panel-top">
+      <div>
+        <h2 id="metadata-title">复现元信息</h2>
+        <p id="metadata-model"></p>
+      </div>
+      <div class="exports">
+        <button id="metadata-copy" type="button" disabled>复制 JSON</button>
+        <form method="dialog"><button autofocus>关闭</button></form>
+      </div>
+    </div>
+    <p id="metadata-status" role="status"></p>
+    <pre id="metadata-block" tabindex="0" hidden><code id="metadata-code"></code></pre>
+  </dialog>
+  <dialog id="preview" aria-labelledby="preview-title">
+    <div id="preview-view">
+      <div class="panel-top preview-top">
+        <div class="preview-heading" aria-live="polite">
+          <h2 id="preview-title"></h2>
+          <p id="preview-caption"></p>
+        </div>
+        <div class="exports">
+          <a id="original" target="_blank" rel="noopener">打开原图</a>
+          <button id="preview-fullscreen" type="button">全屏</button>
+          <form method="dialog"><button autofocus>关闭</button></form>
+        </div>
+      </div>
+      <div class="preview-stage">
+        <button id="preview-prev" class="preview-arrow" type="button" aria-label="上一张">‹</button>
+        <div class="preview-content">
+          <img id="preview-image" alt="">
+          <p id="preview-error" role="status" hidden>图片加载失败</p>
+        </div>
+        <button id="preview-next" class="preview-arrow" type="button" aria-label="下一张">›</button>
+      </div>
+      <div class="preview-footer">
+        <span>滚轮或 ← → 切换</span>
+        <span id="preview-position"></span>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

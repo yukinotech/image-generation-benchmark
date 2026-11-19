@@ -1,0 +1,22 @@
+{
+  "case_id": "e48255bbd86863614f74",
+  "prompt": "A black-and-white studio fashion portrait in profile. The subject lifts her chin and wears circular black sunglasses, a sculptural high-collared garment with abstract spotted fabric, and gloves. She holds a geometric leather handbag with brushed-metal buckles. A hard side light picks out skin, cloth, and leather texture. Behind her is a flat lime-green collage of black-and-white circles, zebra stripes, and halftone dots.\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 1024,
+  "height": 1024,
+  "pixels": 1048576,
+  "model": {
+    "id": "flux2-9b",
+    "label": "FLUX.2 Klein 9B FP8",
+    "unet": "flux-2-klein-9b-fp8.safetensors",
+    "clip": "qwen_3_8b_fp8mixed.safetensors",
+    "vae": "flux2-vae.safetensors",
+    "steps": 4,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "Flux2Scheduler",
+    "template": "image_flux2_klein_text_to_image",
+    "execution_mode": "single"
+  }
+}

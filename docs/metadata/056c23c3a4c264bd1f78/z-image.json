@@ -1,0 +1,30 @@
+{
+  "case_id": "056c23c3a4c264bd1f78",
+  "prompt": "a photo of a carrot left of an orange\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 1024,
+  "height": 1024,
+  "pixels": 1048576,
+  "model": {
+    "id": "z-image",
+    "label": "Z-Image Turbo BF16",
+    "unet": "z_image_turbo_bf16.safetensors",
+    "clip": "qwen_3_4b.safetensors",
+    "vae": "ae.safetensors",
+    "steps": 8,
+    "cfg": 1,
+    "sampler": "res_multistep",
+    "scheduler": "simple",
+    "template": "image_z_image_turbo",
+    "execution_mode": "single",
+    "workflow_options": {
+      "ModelSamplingAuraFlow": {
+        "shift": 3.0
+      },
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

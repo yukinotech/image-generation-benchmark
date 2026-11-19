@@ -1,0 +1,27 @@
+{
+  "case_id": "e48255bbd86863614f74",
+  "prompt": "A black-and-white studio fashion portrait in profile. The subject lifts her chin and wears circular black sunglasses, a sculptural high-collared garment with abstract spotted fabric, and gloves. She holds a geometric leather handbag with brushed-metal buckles. A hard side light picks out skin, cloth, and leather texture. Behind her is a flat lime-green collage of black-and-white circles, zebra stripes, and halftone dots.\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 4096,
+  "height": 4096,
+  "pixels": 16777216,
+  "model": {
+    "id": "minimax",
+    "label": "MiniMax H3 Image Pruned INT8",
+    "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+    "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+    "vae": "minimax_h3_image_vae_fp16.safetensors",
+    "steps": 6,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_minimax_h3_image_t2i",
+    "execution_mode": "staged",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

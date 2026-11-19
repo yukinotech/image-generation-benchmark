@@ -1,0 +1,141 @@
+{
+  "case_id": "6535ce8ade216ea800b6",
+  "prompt": "生成一张1:1正方形的韩系小红书爆款电商种草海报，主题为「薄荷绿丝袜」。整体采用高质量真人时尚摄影与手绘杂志拼贴设计结合的风格，薄荷绿、奶油白、浅灰色为主色调，清新甜美、俏皮精致，带有轻微胶片颗粒和水泥墙质感。\n\n画面中央偏右是一位年轻成年东亚女性模特，长直黑发、齐刘海，精致甜美的妆容，白皙肌肤，微笑看向镜头。穿黑色修身长袖上衣，带小巧花卉刺绣和蕾丝装饰，黑色超短裙，双腿穿半透明薄荷绿色过膝长筒丝袜，袜口有稍深的青绿色宽弹力边，丝袜紧贴修长双腿，布料柔软细腻，质感真实。脚穿黑色漆皮厚底细高跟鞋，鞋头露出薄荷绿色。模特侧身坐在浅灰色水泥楼梯上，一条腿自然抬起弯曲，另一条腿斜向左下方延伸，右手撑在楼梯上，双腿形成优雅的对角线构图。柔和自然光，真实皮肤纹理，精致商业摄影，清晰的丝袜织物质感。\n\n海报采用信息密集但有序的拼贴构图。左上角放置极大的手写圆润中文标题「薄荷绿丝袜」，青绿色文字，白色不规则厚描边，轻微投影，类似手绘剪纸贴纸。标题下方为斜向青绿色刷漆笔触横幅，白色文字「全民进入薄荷绿时代」，再下方用白色手绘笔刷承载黑色副标题「网红爆款 韩系氛围出片神器」。左侧纵向放置四组圆形线描小图标和简短产品卖点，使用樱桃、波浪、钻石、闪光元素，中文文案分别突出显白提亮、柔软舒适、高弹贴合和百搭时尚。\n\n右侧竖直排列三个圆角白色描边的产品细节展示框：顶部为大腿袜口宽松紧带特写，中间为薄荷绿丝袜柔软面料褶皱特写，底部为丝袜包裹脚尖的细节特写。每个框搭配不规则白色中文标签贴纸和青绿色字体，强调不易滑落、柔软透气、自然贴合。\n\n左下角有一张略微倾斜的白边拍立得风格小照片，展示模特穿薄荷绿长筒丝袜的腿部全身效果。海报四周点缀白色手绘爱心、闪光星星、弯曲箭头、樱桃图案、小花朵和波浪下划线。模特腿部周围有手写贴纸文字「高弹柔软 舒适不勒」和「薄荷绿 舒适白！」。\n\n整体文字排版富有层次，标题占左上大面积，主体人物是视觉中心，三张细节图靠右，卖点位于左边，画面丰富但不凌乱。强调真实商业摄影、柔和漫射光、自然阴影、清晰准确的中文字体、精致的手绘装饰、统一的薄荷绿视觉系统，高清成品电商广告海报。\n",
+  "ratio": "1:1",
+  "seed": "9910248524613294191",
+  "models": [
+    {
+      "id": "moss",
+      "label": "MOSS-Image SFT INT8",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "Moss_image\\moss_image_sft_int8_convrot.safetensors",
+      "clip": "qwen3.5_9b_int8_convrot.safetensors",
+      "vae": "flux2-vae_small.safetensors",
+      "steps": 25,
+      "cfg": 2.5,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+      "template": "image_moss_image_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "krea2",
+      "label": "Krea 2 Turbo INT8",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+      "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+      "vae": "qwen_image_vae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_krea2_turbo_t2i_int8",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax H3 Image Pruned INT8",
+      "width": 4096,
+      "height": 4096,
+      "pixels": 16777216,
+      "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_minimax_h3_image_t2i",
+      "execution_mode": "staged",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "qwen21",
+      "label": "Qwen-Image 2.1 INT8",
+      "width": 2048,
+      "height": 2048,
+      "pixels": 4194304,
+      "unet": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 25,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_qwen_image_2_1_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "TextEncodeQwenImage21": {
+          "resolution": 1024,
+          "negative_prompt": ""
+        },
+        "QwenImage21Cache": {
+          "device": "auto",
+          "dtype": "default"
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "z-image",
+      "label": "Z-Image Turbo BF16",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "z_image_turbo_bf16.safetensors",
+      "clip": "qwen_3_4b.safetensors",
+      "vae": "ae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "template": "image_z_image_turbo",
+      "execution_mode": "single",
+      "workflow_options": {
+        "ModelSamplingAuraFlow": {
+          "shift": 3.0
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "flux2-9b",
+      "label": "FLUX.2 Klein 9B FP8",
+      "width": 1024,
+      "height": 1024,
+      "pixels": 1048576,
+      "unet": "flux-2-klein-9b-fp8.safetensors",
+      "clip": "qwen_3_8b_fp8mixed.safetensors",
+      "vae": "flux2-vae.safetensors",
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "Flux2Scheduler",
+      "template": "image_flux2_klein_text_to_image",
+      "execution_mode": "single"
+    }
+  ]
+}

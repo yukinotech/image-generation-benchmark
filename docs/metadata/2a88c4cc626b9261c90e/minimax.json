@@ -1,0 +1,27 @@
+{
+  "case_id": "2a88c4cc626b9261c90e",
+  "prompt": "请解答一道展柜陈列推理题，并将答案画成 16:9 横版中文博物馆工作板。某展厅有两层玻璃展柜，每层三个位置。以上、下两排和左、中、右三列定义位置，左右以观众正面视角为准。六件展品玉环、铜铃、贝壳、琥珀、织片、银镜各占一格，各出现一次。条件如下：\n① 琥珀在上排正中。\n② 玉环与琥珀同排，且紧挨在琥珀左边。\n③ 铜铃在玉环正下方。\n④ 贝壳与铜铃同排，且紧挨在铜铃右边。\n⑤ 银镜在织片正下方。\n\n左侧约三分之一用黑色中文印刷体完整列出题面和条件。右侧画正视的两排三列展柜，框外标清上排、下排和左、中、右，格内只有一件写实小插画及对应的两字标签。六件展品形态互不混淆，玉环有中孔，铜铃有铃舌，贝壳有螺纹，琥珀有暖黄色透光感，织片有经纬纹，银镜用无柄的圆形古镜造型。\n\n底部附一条四步验证带，展示先定琥珀与玉环，再定铜铃与贝壳，最后用同列上下关系放入银镜与织片，以及核对六格各一次。用短引线标出两组“正下方”约束，用同排括线标出两组“紧挨左／右”约束。引线不得遮住展品或标签。整体用暖白底、炭黑文字、靛蓝柜框与低饱和展品色，清晰呈现唯一解。不得增加线索、交换视角或重复绘制展品。输出单张完整展板。\n",
+  "ratio": "16:9",
+  "seed": "14947802011230388597",
+  "width": 5472,
+  "height": 3072,
+  "pixels": 16809984,
+  "model": {
+    "id": "minimax",
+    "label": "MiniMax H3 Image Pruned INT8",
+    "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+    "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+    "vae": "minimax_h3_image_vae_fp16.safetensors",
+    "steps": 6,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_minimax_h3_image_t2i",
+    "execution_mode": "staged",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

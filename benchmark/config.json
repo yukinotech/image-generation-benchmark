@@ -1,0 +1,97 @@
+{
+  "server": "http://127.0.0.1:8188",
+  "seeds": null,
+  "model_pixel_budgets": {
+    "minimax": 16777216,
+    "qwen21": 4194304
+  },
+  "model_size_presets": {
+    "qwen21": {
+      "1:1": [2048, 2048],
+      "4:3": [2400, 1792],
+      "3:4": [1792, 2400],
+      "3:2": [2528, 1696],
+      "2:3": [1696, 2528],
+      "16:9": [2752, 1536],
+      "9:16": [1536, 2752]
+    }
+  },
+  "sizes": {
+    "1:1": [1024, 1024],
+    "4:3": [1152, 864],
+    "3:4": [864, 1152],
+    "3:2": [1248, 832],
+    "2:3": [832, 1248],
+    "16:9": [1344, 768],
+    "9:16": [768, 1344]
+  },
+  "models": {
+    "moss": {
+      "label": "MOSS-Image SFT INT8",
+      "unet": "Moss_image/moss_image_sft_int8_convrot.safetensors",
+      "clip": "qwen3.5_9b_int8_convrot.safetensors",
+      "vae": "flux2-vae_small.safetensors",
+      "steps": 25,
+      "cfg": 2.5,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+      "template": "image_moss_image_t2i"
+    },
+    "krea2": {
+      "label": "Krea 2 Turbo INT8",
+      "unet": "Krea2/krea2_turbo_int8_convrot.safetensors",
+      "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+      "vae": "qwen_image_vae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_krea2_turbo_t2i_int8"
+    },
+    "minimax": {
+      "label": "MiniMax H3 Image Pruned INT8",
+      "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_minimax_h3_image_t2i"
+    },
+    "qwen21": {
+      "label": "Qwen-Image 2.1 INT8",
+      "unet": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 25,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_qwen_image_2_1_t2i"
+    },
+    "z-image": {
+      "label": "Z-Image Turbo BF16",
+      "unet": "z_image_turbo_bf16.safetensors",
+      "clip": "qwen_3_4b.safetensors",
+      "vae": "ae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "template": "image_z_image_turbo"
+    },
+    "flux2-9b": {
+      "label": "FLUX.2 Klein 9B FP8",
+      "unet": "flux-2-klein-9b-fp8.safetensors",
+      "clip": "qwen_3_8b_fp8mixed.safetensors",
+      "vae": "flux2-vae.safetensors",
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "Flux2Scheduler",
+      "template": "image_flux2_klein_text_to_image"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "case_id": "056c23c3a4c264bd1f78",
+  "prompt": "a photo of a carrot left of an orange\n",
+  "ratio": "1:1",
+  "seed": "42",
+  "width": 1024,
+  "height": 1024,
+  "pixels": 1048576,
+  "model": {
+    "id": "krea2",
+    "label": "Krea 2 Turbo INT8",
+    "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+    "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors",
+    "steps": 8,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_krea2_turbo_t2i_int8",
+    "execution_mode": "single",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

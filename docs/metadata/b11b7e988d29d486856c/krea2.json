@@ -1,0 +1,27 @@
+{
+  "case_id": "b11b7e988d29d486856c",
+  "prompt": "请解答下面的人员选派推理题，并生成一张可视化解答图。16:9 横向，白底，规范清晰的中文排版。\n某单位要从甲、乙、丙、丁、戊、己六名工作人员中，恰好选派三人组成调研组，必须同时满足：\n如果甲入选，那么乙也必须入选。\n丙、丁两人中恰好有一人入选。\n乙和戊不能同时入选。\n如果己入选，那么丙也必须入选。\n已确定戊入选。\n请根据全部条件确定三人名单。\n图中上方呈现题目条件，下方分成“入选”和“未入选”两个区域，将六张工作人员卡片分别放入正确区域。每张卡片用人物图标和醒目的姓名标签表示，六人各出现一次，不得重复或遗漏。\n底部用简短批注展示关键排除依据。卡片所在区域、名单与批注必须一致，不得增加额外条件。仅输出完成后的解答图片。\n",
+  "ratio": "16:9",
+  "seed": "842903453870999653",
+  "width": 1344,
+  "height": 768,
+  "pixels": 1032192,
+  "model": {
+    "id": "krea2",
+    "label": "Krea 2 Turbo INT8",
+    "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+    "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors",
+    "steps": 8,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_krea2_turbo_t2i_int8",
+    "execution_mode": "single",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

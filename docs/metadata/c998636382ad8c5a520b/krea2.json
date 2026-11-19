@@ -1,0 +1,27 @@
+{
+  "case_id": "c998636382ad8c5a520b",
+  "prompt": "制作一张侦探案件推理板，解答以下谜题：\n保险箱中的机密文件失窃，A、B、C、D、E、F六名嫌疑人中，恰有一人独自作案。每人各说一句话：\nA：“凶手是B或C。”\nB：“D不是凶手。”\nC：“A的整句话是假的。”\nD：“凶手是E或F。”\nE：“B和D的话恰好一句真、另一句假。”\nF：“A不是凶手。”\n六句话恰好三真三假。“或”表示至少一个成立，所有引用均指上述陈述。\n找出唯一凶手，并制作完整证据板：展示六张标注字母的嫌疑人肖像及原话，逐一标明“真／假”，突出凶手；附简洁验证表，列出分别假设六人为凶手时，真话各有几句。用连线说明陈述之间的引用关系，确保肖像标注、推理和表格一致。\n不添加动机、不在场证明、同伙或额外证据，外貌与表情不作为线索。电影黑色侦探风格，中文清晰易读，16:9横版。\n",
+  "ratio": "16:9",
+  "seed": "842903453870999653",
+  "width": 1344,
+  "height": 768,
+  "pixels": 1032192,
+  "model": {
+    "id": "krea2",
+    "label": "Krea 2 Turbo INT8",
+    "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+    "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors",
+    "steps": 8,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_krea2_turbo_t2i_int8",
+    "execution_mode": "single",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}
