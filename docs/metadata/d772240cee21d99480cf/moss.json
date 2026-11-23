@@ -1,0 +1,28 @@
+{
+  "case_id": "d772240cee21d99480cf",
+  "prompt": "Aspect ratio 16:9, Create original game key art that evokes the genre atmosphere of a major AAA production through mood, gameplay motifs and composition. Use realistic 3D materials and cinematic lighting, with original identities, costumes and symbols. Scene: An adult frontier rider waits at a waystation as a sandstorm approaches and the horse turns its head. Use original identities and designs without existing franchise names, characters, brand marks or watermarks.\n",
+  "ratio": "16:9",
+  "seed": "3515115868",
+  "width": 1344,
+  "height": 768,
+  "pixels": 1032192,
+  "model": {
+    "id": "moss",
+    "label": "MOSS-Image SFT INT8",
+    "unet": "Moss_image\\moss_image_sft_int8_convrot.safetensors",
+    "clip": "qwen3.5_9b_int8_convrot.safetensors",
+    "vae": "flux2-vae_small.safetensors",
+    "steps": 25,
+    "cfg": 2.5,
+    "sampler": "er_sde",
+    "scheduler": "simple",
+    "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+    "template": "image_moss_image_t2i",
+    "execution_mode": "single",
+    "workflow_options": {
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}

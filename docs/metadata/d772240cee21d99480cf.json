@@ -1,0 +1,141 @@
+{
+  "case_id": "d772240cee21d99480cf",
+  "prompt": "Aspect ratio 16:9, Create original game key art that evokes the genre atmosphere of a major AAA production through mood, gameplay motifs and composition. Use realistic 3D materials and cinematic lighting, with original identities, costumes and symbols. Scene: An adult frontier rider waits at a waystation as a sandstorm approaches and the horse turns its head. Use original identities and designs without existing franchise names, characters, brand marks or watermarks.\n",
+  "ratio": "16:9",
+  "seed": "3515115868",
+  "models": [
+    {
+      "id": "moss",
+      "label": "MOSS-Image SFT INT8",
+      "width": 1344,
+      "height": 768,
+      "pixels": 1032192,
+      "unet": "Moss_image\\moss_image_sft_int8_convrot.safetensors",
+      "clip": "qwen3.5_9b_int8_convrot.safetensors",
+      "vae": "flux2-vae_small.safetensors",
+      "steps": 25,
+      "cfg": 2.5,
+      "sampler": "er_sde",
+      "scheduler": "simple",
+      "negative": "nsfw, worst quality, bad anatomy, watermark, jpeg artifact",
+      "template": "image_moss_image_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "krea2",
+      "label": "Krea 2 Turbo INT8",
+      "width": 1344,
+      "height": 768,
+      "pixels": 1032192,
+      "unet": "Krea2\\krea2_turbo_int8_convrot.safetensors",
+      "clip": "qwen3vl_4b_fp8_scaled.safetensors",
+      "vae": "qwen_image_vae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_krea2_turbo_t2i_int8",
+      "execution_mode": "single",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "minimax",
+      "label": "MiniMax H3 Image Pruned INT8",
+      "width": 5472,
+      "height": 3072,
+      "pixels": 16809984,
+      "unet": "minimax_h3_image_pruned_int8_convrot.safetensors",
+      "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+      "vae": "minimax_h3_image_vae_fp16.safetensors",
+      "steps": 6,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_minimax_h3_image_t2i",
+      "execution_mode": "staged",
+      "workflow_options": {
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "qwen21",
+      "label": "Qwen-Image 2.1 INT8",
+      "width": 2752,
+      "height": 1536,
+      "pixels": 4227072,
+      "unet": "qwen_image_2.1_int8_convrot.safetensors",
+      "clip": "qwen3vl_8b_int8_convrot.safetensors",
+      "vae": "qwen_image_2.1_vae_bf16.safetensors",
+      "steps": 25,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "template": "image_qwen_image_2_1_t2i",
+      "execution_mode": "single",
+      "workflow_options": {
+        "TextEncodeQwenImage21": {
+          "resolution": 1024,
+          "negative_prompt": ""
+        },
+        "QwenImage21Cache": {
+          "device": "auto",
+          "dtype": "default"
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "z-image",
+      "label": "Z-Image Turbo BF16",
+      "width": 1344,
+      "height": 768,
+      "pixels": 1032192,
+      "unet": "z_image_turbo_bf16.safetensors",
+      "clip": "qwen_3_4b.safetensors",
+      "vae": "ae.safetensors",
+      "steps": 8,
+      "cfg": 1,
+      "sampler": "res_multistep",
+      "scheduler": "simple",
+      "template": "image_z_image_turbo",
+      "execution_mode": "single",
+      "workflow_options": {
+        "ModelSamplingAuraFlow": {
+          "shift": 3.0
+        },
+        "KSampler": {
+          "denoise": 1.0
+        }
+      }
+    },
+    {
+      "id": "flux2-9b",
+      "label": "FLUX.2 Klein 9B FP8",
+      "width": 1344,
+      "height": 768,
+      "pixels": 1032192,
+      "unet": "flux-2-klein-9b-fp8.safetensors",
+      "clip": "qwen_3_8b_fp8mixed.safetensors",
+      "vae": "flux2-vae.safetensors",
+      "steps": 4,
+      "cfg": 1,
+      "sampler": "euler",
+      "scheduler": "Flux2Scheduler",
+      "template": "image_flux2_klein_text_to_image",
+      "execution_mode": "single"
+    }
+  ]
+}

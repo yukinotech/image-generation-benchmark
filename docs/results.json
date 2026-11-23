@@ -1195,6 +1195,84 @@
         "flux2-9b": "metadata/0f8ea0eaaee5938d61d6/flux2-9b.json"
       },
       "metadata": "metadata/0f8ea0eaaee5938d61d6.json"
+    },
+    {
+      "id": "d772240cee21d99480cf",
+      "prompt": "Aspect ratio 16:9, Create original game key art that evokes the genre atmosphere of a major AAA production through mood, gameplay motifs and composition. Use realistic 3D materials and cinematic lighting, with original identities, costumes and symbols. Scene: An adult frontier rider waits at a waystation as a sandstorm approaches and the horse turns its head. Use original identities and designs without existing franchise names, characters, brand marks or watermarks.\n",
+      "translation": "宽高比 16:9，创作原创游戏主视觉图，通过氛围、玩法元素和构图唤起大型 AAA 级制作的游戏类型感。使用逼真的 3D 材质和电影级灯光，搭配原创的角色身份、服装和符号。场景：一名成年边疆骑手在驿站等待，沙暴逼近，马儿转过头来。使用原创的身份和设计，不包含现有系列名称、角色、品牌标志或水印。",
+      "ratio": "16:9",
+      "width": 1344,
+      "height": 768,
+      "seed": "3515115868",
+      "images": {
+        "moss": "images/d772240cee21d99480cf/moss.png",
+        "krea2": "images/d772240cee21d99480cf/krea2.png",
+        "minimax": "images/d772240cee21d99480cf/minimax.png",
+        "qwen21": "images/d772240cee21d99480cf/qwen21.png",
+        "z-image": "images/d772240cee21d99480cf/z-image.png",
+        "flux2-9b": "images/d772240cee21d99480cf/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/d772240cee21d99480cf/moss-thumb.webp",
+          "preview": "images/d772240cee21d99480cf/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/d772240cee21d99480cf/krea2-thumb.webp",
+          "preview": "images/d772240cee21d99480cf/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/d772240cee21d99480cf/minimax-thumb.webp",
+          "preview": "images/d772240cee21d99480cf/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/d772240cee21d99480cf/qwen21-thumb.webp",
+          "preview": "images/d772240cee21d99480cf/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/d772240cee21d99480cf/z-image-thumb.webp",
+          "preview": "images/d772240cee21d99480cf/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/d772240cee21d99480cf/flux2-9b-thumb.webp",
+          "preview": "images/d772240cee21d99480cf/flux2-9b-preview.webp"
+        }
+      },
+      "image_sizes": {
+        "moss": {
+          "width": 1344,
+          "height": 768
+        },
+        "krea2": {
+          "width": 1344,
+          "height": 768
+        },
+        "minimax": {
+          "width": 5472,
+          "height": 3072
+        },
+        "qwen21": {
+          "width": 2752,
+          "height": 1536
+        },
+        "z-image": {
+          "width": 1344,
+          "height": 768
+        },
+        "flux2-9b": {
+          "width": 1344,
+          "height": 768
+        }
+      },
+      "image_metadata": {
+        "moss": "metadata/d772240cee21d99480cf/moss.json",
+        "krea2": "metadata/d772240cee21d99480cf/krea2.json",
+        "minimax": "metadata/d772240cee21d99480cf/minimax.json",
+        "qwen21": "metadata/d772240cee21d99480cf/qwen21.json",
+        "z-image": "metadata/d772240cee21d99480cf/z-image.json",
+        "flux2-9b": "metadata/d772240cee21d99480cf/flux2-9b.json"
+      },
+      "metadata": "metadata/d772240cee21d99480cf.json"
     }
   ]
 }
