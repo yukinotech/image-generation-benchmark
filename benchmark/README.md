@@ -110,6 +110,38 @@
 
 导出目录应为新目录。里面包含主页、样式、脚本、汇总 JSON 和去除工作流元数据的 PNG，资源路径相对于页面。可以把该目录的内容作为 GitHub Pages 的发布源。导出时只纳入正式生成成功的结果。
 
+### 添加提示词后的发布流程
+
+1. 将新提示词保存为 UTF-8 `.txt`。如需固定画幅，在 [尺寸规则表](prompts/size_rules.json) 登记。
+2. 用新的批次名运行 benchmark，只选择本次新增的提示词。等待图片、CSV、HTML 报告和中文译文生成完成。
+3. 在项目根目录准备发布包。将示例中的 `round6` 换成本次的正式批次名。
+
+```powershell
+$prompt = '16_new_prompt.txt'
+$promptRoot = (Resolve-Path .\benchmark\prompts).Path
+$exclude = @(Get-ChildItem $promptRoot -Recurse -File -Filter '*.txt' |
+    ForEach-Object { [IO.Path]::GetRelativePath($promptRoot, $_.FullName).Replace('\', '/') } |
+    Where-Object { $_ -ne $prompt })
+.\benchmark\run.cmd --run round6 --exclude-prompts @exclude
+if ($LASTEXITCODE -ne 0) { throw '请先完成 benchmark，再准备发布包。' }
+.\benchmark\prepare_release.cmd --require-run round6
+```
+
+命令默认更新同级的 `benchmark-pages` Git 仓库，也可用 `--repo` 指定其他发布仓库根目录。它先校验指定批次的图片和译文，再重新导出静态汇总。PNG 重新编码后逐张检查尺寸和数据块。待发布的文本会扫描本机用户名、路径、邮箱和常见凭据格式。发布包仅从源码白名单、提示词和公开汇总生成。源码与页面同步前，命令会检查发布目录是否含有未处理的本地修改。
+
+4. 审阅差异和新增图文，再提交推送。每次提交使用 GitHub 的 noreply 身份，避免带上本机 Git 配置里的姓名或邮箱。
+
+```powershell
+git -C benchmark-pages status --short
+git -C benchmark-pages diff --stat
+$actor = gh api user | ConvertFrom-Json
+git -C benchmark-pages add -A -- README.md benchmark docs
+git -C benchmark-pages -c "user.name=$($actor.login)" -c "user.email=$($actor.id)+$($actor.login)@users.noreply.github.com" commit -m "Update benchmark results"
+git -C benchmark-pages -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin main
+```
+
+GitHub Pages 从 `main` 的 `/docs` 发布。推送后检查部署状态，并在公开页面确认新行、图片和复现 JSON 都能打开。
+
 汇总页第一列显示提示词摘要，画幅和 Seed 各占一行，点击可查看完整原文。每张图片下方显示宽高和元信息图标，点击可查看并复制该图的 JSON。内容包含原始提示词、尺寸、Seed、权重文件名和采样设置。Seed 用十进制字符串保存，避免浏览器舍入 64 位整数。
 
 首轮三条提示词已登记为固定 `1:1`。有效批次报告、汇总页和静态导出每条只包含这一组。旧尺寸的 PNG 保留在本地输出目录中作为存档。
