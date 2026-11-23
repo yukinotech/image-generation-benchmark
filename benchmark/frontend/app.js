@@ -168,21 +168,22 @@ function renderOverview() {
 
     for (const model of data.models) {
       const cell = element("td");
-      const source = item.images[model.id];
-      if (source) {
+      const original = item.images[model.id];
+      if (original) {
+        const { thumbnail, preview } = item.image_previews[model.id];
         const actual = imageSize(item, model.id);
         const description = caseLabel({ ...item, ...actual });
         const button = element("button", "", "result-link");
         button.type = "button";
         button.setAttribute("aria-label", `放大查看 ${model.label} · ${description}`);
         const position = gallery.length;
-        gallery.push({ image: source, model: model.label, description });
+        gallery.push({ image: preview, original, model: model.label, description });
         const image = element("img");
         image.alt = model.label + " 生成图";
         image.loading = "lazy";
         image.decoding = "async";
         image.addEventListener("error", () => image.replaceWith(element("span", "图片加载失败")));
-        image.src = source;
+        image.src = thumbnail;
         button.append(image);
         button.addEventListener("click", () => openPreview(gallery, position));
         cell.append(button, imageDetails(item, model, actual));
@@ -259,7 +260,7 @@ function renderPreview() {
   image.hidden = false;
   image.alt = `${entry.model} · ${entry.description}`;
   image.src = entry.image;
-  $("original").href = entry.image;
+  $("original").href = entry.original;
   $("preview-prev").setAttribute("aria-disabled", String(previewIndex === 0));
   $("preview-next").setAttribute("aria-disabled", String(previewIndex === previewEntries.length - 1));
 }
@@ -345,13 +346,14 @@ function render() {
 function renderCards(current, models) {
   const visible = models.filter(model => selectedModels.has(model.id));
   const gallery = visible.map(model => ({
-    image: current.images[model.id],
+    image: current.image_previews[model.id].preview,
+    original: current.images[model.id],
     model: model.label,
     description: caseLabel({ ...current, ...imageSize(current, model.id) }),
   }));
   const cards = visible.map((model, index) => {
     const size = imageSize(current, model.id);
-    return card(gallery[index].image, model, size, imageDetails(current, model, size),
+    return card(current.image_previews[model.id].thumbnail, model, size, imageDetails(current, model, size),
       () => openPreview(gallery, index));
   });
   $("grid").replaceChildren(...(cards.length ? cards : [element("p", "请选择要显示的模型。")]));

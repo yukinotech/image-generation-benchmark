@@ -9,7 +9,9 @@ import shutil
 import socket
 import sys
 from contextlib import contextmanager
+from functools import lru_cache
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from io import BytesIO
 from itertools import product
 from pathlib import Path
 from threading import Thread
@@ -21,6 +23,10 @@ from artifacts import RUNS, job_image_path, read_json
 
 RUN_NAME = re.compile(r"[A-Za-z0-9_-]{1,48}", re.ASCII)
 IMAGE = re.compile(r"images/[\w-]+/p[0-9]+-r[0-9]+-[0-9]+x[0-9]+-s[0-9]+\.png", re.ASCII)
+WEBP_VARIANTS = {
+    "thumbnail": ("-thumb.webp", 768, 82),
+    "preview": ("-preview.webp", 2048, 88),
+}
 STATIC = {
     "/": ("index.html", "text/html; charset=utf-8"),
     "/index.html": ("index.html", "text/html; charset=utf-8"),
@@ -61,6 +67,11 @@ def run_dirs():
     )
 
 
+def webp_paths(original):
+    return {label: original.removesuffix(".png") + suffix
+            for label, (suffix, _, _) in WEBP_VARIANTS.items()}
+
+
 def public_catalog(*, static=False):
     models = {}
     cases = []
@@ -95,6 +106,7 @@ def public_catalog(*, static=False):
             case_key = json.dumps([name, prompt, ratio, width, height, seed])
             case_id = hashlib.sha256(case_key.encode("utf-8")).hexdigest()[:20]
             images = {}
+            image_previews = {}
             image_sizes = {}
             image_metadata = {}
             parameters = {}
@@ -129,6 +141,7 @@ def public_catalog(*, static=False):
                 else:
                     url = f"runs/{quote(name, safe='')}/{quote(relative)}"
                 images[model] = url
+                image_previews[model] = webp_paths(url)
             if images:
                 translation = translations.get(prompt)
                 metadata_path = f"metadata/{case_id}.json"
@@ -145,13 +158,38 @@ def public_catalog(*, static=False):
                     "id": case_id, "prompt": prompts[prompt],
                     "translation": translation if isinstance(translation, str) else None,
                     "ratio": ratio, "width": width, "height": height, "seed": str(seed),
-                    "images": images, "image_sizes": image_sizes, "image_metadata": image_metadata,
+                    "images": images, "image_previews": image_previews,
+                    "image_sizes": image_sizes, "image_metadata": image_metadata,
                     "metadata": metadata_path,
                 })
     return {
         "models": [{"id": model, "label": label} for model, label in models.items()],
         "cases": cases,
     }, assets, metadata
+
+
+def clean_pixels(image):
+    pixels = image.convert("RGBA" if image.has_transparency_data else "RGB")
+    pixels.info.clear()
+    return pixels
+
+
+def save_webp(pixels, target, variant):
+    from PIL import Image
+
+    _, long_edge, quality = WEBP_VARIANTS[variant]
+    with pixels.copy() as resized:
+        resized.thumbnail((long_edge, long_edge), Image.Resampling.LANCZOS)
+        resized.save(target, format="WEBP", quality=quality, method=6)
+
+
+@lru_cache(maxsize=128)
+def local_webp(path, modified_ns, variant):
+    from PIL import Image
+
+    with Image.open(path) as image, clean_pixels(image) as pixels, BytesIO() as output:
+        save_webp(pixels, output, variant)
+        return output.getvalue()
 
 
 def export_site(destination):
@@ -165,10 +203,10 @@ def export_site(destination):
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         # Save only image pixels. ComfyUI embeds workflow and prompt metadata in PNGs.
-        with Image.open(source) as image:
-            pixels = image.convert("RGBA" if image.has_transparency_data else "RGB")
-            pixels.info.clear()
+        with Image.open(source) as image, clean_pixels(image) as pixels:
             pixels.save(target, compress_level=3)
+            for variant, path in webp_paths(relative).items():
+                save_webp(pixels, destination / path, variant)
     for relative, record in metadata.items():
         target = destination / relative
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -234,11 +272,22 @@ class Viewer(BaseHTTPRequestHandler):
                 return
         if path.startswith("/runs/"):
             name, _, relative = path.removeprefix("/runs/").partition("/")
+            variant = None
+            for label, (suffix, _, _) in WEBP_VARIANTS.items():
+                if relative.endswith(suffix):
+                    relative = relative.removesuffix(suffix) + ".png"
+                    variant = label
+                    break
             if name in run_dirs() and IMAGE.fullmatch(relative):
                 directory = (RUNS / name).resolve()
                 file = (directory / relative).resolve()
                 if file.is_relative_to(directory):
-                    self.send_file(file, "image/png")
+                    if variant is None:
+                        self.send_file(file, "image/png")
+                    else:
+                        body = local_webp(file, file.stat().st_mtime_ns, variant)
+                        self.respond(200, "image/webp", len(body))
+                        self.wfile.write(body)
                     return
         raise FileNotFoundError(path)
 

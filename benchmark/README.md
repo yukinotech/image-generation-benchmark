@@ -108,7 +108,17 @@
 .\benchmark\frontend\run.cmd --export-dir .\benchmark-public
 ```
 
-导出目录应为新目录。里面包含主页、样式、脚本、汇总 JSON 和去除工作流元数据的 PNG，资源路径相对于页面。可以把该目录的内容作为 GitHub Pages 的发布源。导出时只纳入正式生成成功的结果。
+导出目录应为新目录。里面包含主页、样式、脚本、汇总 JSON 和图像资源，路径均相对于页面。可以把该目录的内容作为 GitHub Pages 的发布源。导出时只纳入正式生成成功的结果。
+
+每张图在导出时由便携版 Python 的 Pillow 生成三份资源。两档 WebP 使用 Lanczos 缩小，保持画幅且不放大小图。
+
+| 用途 | 格式 | 设置 |
+| --- | --- | --- |
+| 首页表格和单组详情 | 缩略 WebP | 长边最多 768 px，质量 82 |
+| 点击查看和全屏 | 大图 WebP | 长边最多 2048 px，质量 88 |
+| 点击「打开原图」 | PNG | 保留原始像素尺寸，无损重新编码 |
+
+三份图片均不携带嵌入的工作流或图片元数据。单图复现 JSON 保留原始尺寸和生成参数。本地查看器按需编码 WebP；GitHub Pages 直接提供已生成的静态文件。
 
 ### 添加提示词后的发布流程
 
@@ -127,7 +137,7 @@ if ($LASTEXITCODE -ne 0) { throw '请先完成 benchmark，再准备发布包。
 .\benchmark\prepare_release.cmd --require-run round6
 ```
 
-命令默认更新同级的 `benchmark-pages` Git 仓库，也可用 `--repo` 指定其他发布仓库根目录。它先校验指定批次的图片和译文，再重新导出静态汇总。PNG 重新编码后逐张检查尺寸和数据块。待发布的文本会扫描本机用户名、路径、邮箱和常见凭据格式。发布包仅从源码白名单、提示词和公开汇总生成。源码与页面同步前，命令会检查发布目录是否含有未处理的本地修改。
+命令默认更新同级的 `benchmark-pages` Git 仓库，也可用 `--repo` 指定其他发布仓库根目录。它先校验指定批次的图片和译文，再导出静态汇总并生成两档 WebP 与脱敏原图。发布前逐张校验 PNG 和 WebP 的尺寸及容器数据块。待发布的文本会扫描本机用户名、路径、邮箱和常见凭据格式。发布包仅从源码白名单、提示词和公开汇总生成。源码与页面同步前，命令会检查发布目录是否含有未处理的本地修改。
 
 4. 审阅差异和新增图文，再提交推送。每次提交使用 GitHub 的 noreply 身份，避免带上本机 Git 配置里的姓名或邮箱。
 
@@ -140,7 +150,7 @@ git -C benchmark-pages -c "user.name=$($actor.login)" -c "user.email=$($actor.id
 git -C benchmark-pages -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin main
 ```
 
-GitHub Pages 从 `main` 的 `/docs` 发布。推送后检查部署状态，并在公开页面确认新行、图片和复现 JSON 都能打开。
+GitHub Pages 从 `main` 的 `/docs` 发布。推送后检查部署状态，并在公开页面确认新行、缩略图、大图、原图链接和复现 JSON 都能打开。
 
 汇总页第一列显示提示词摘要，画幅和 Seed 各占一行，点击可查看完整原文。每张图片下方显示宽高和元信息图标，点击可查看并复制该图的 JSON。内容包含原始提示词、尺寸、Seed、权重文件名和采样设置。Seed 用十进制字符串保存，避免浏览器舍入 64 位整数。
 

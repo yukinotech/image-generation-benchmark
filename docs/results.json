@@ -42,6 +42,32 @@
         "z-image": "images/e48255bbd86863614f74/z-image.png",
         "flux2-9b": "images/e48255bbd86863614f74/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/e48255bbd86863614f74/moss-thumb.webp",
+          "preview": "images/e48255bbd86863614f74/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/e48255bbd86863614f74/krea2-thumb.webp",
+          "preview": "images/e48255bbd86863614f74/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/e48255bbd86863614f74/minimax-thumb.webp",
+          "preview": "images/e48255bbd86863614f74/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/e48255bbd86863614f74/qwen21-thumb.webp",
+          "preview": "images/e48255bbd86863614f74/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/e48255bbd86863614f74/z-image-thumb.webp",
+          "preview": "images/e48255bbd86863614f74/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/e48255bbd86863614f74/flux2-9b-thumb.webp",
+          "preview": "images/e48255bbd86863614f74/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1024,
@@ -93,6 +119,32 @@
         "qwen21": "images/056c23c3a4c264bd1f78/qwen21.png",
         "z-image": "images/056c23c3a4c264bd1f78/z-image.png",
         "flux2-9b": "images/056c23c3a4c264bd1f78/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/056c23c3a4c264bd1f78/moss-thumb.webp",
+          "preview": "images/056c23c3a4c264bd1f78/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/056c23c3a4c264bd1f78/krea2-thumb.webp",
+          "preview": "images/056c23c3a4c264bd1f78/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/056c23c3a4c264bd1f78/minimax-thumb.webp",
+          "preview": "images/056c23c3a4c264bd1f78/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/056c23c3a4c264bd1f78/qwen21-thumb.webp",
+          "preview": "images/056c23c3a4c264bd1f78/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/056c23c3a4c264bd1f78/z-image-thumb.webp",
+          "preview": "images/056c23c3a4c264bd1f78/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/056c23c3a4c264bd1f78/flux2-9b-thumb.webp",
+          "preview": "images/056c23c3a4c264bd1f78/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {
@@ -146,6 +198,32 @@
         "z-image": "images/be92e51d645a8d82a69d/z-image.png",
         "flux2-9b": "images/be92e51d645a8d82a69d/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/be92e51d645a8d82a69d/moss-thumb.webp",
+          "preview": "images/be92e51d645a8d82a69d/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/be92e51d645a8d82a69d/krea2-thumb.webp",
+          "preview": "images/be92e51d645a8d82a69d/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/be92e51d645a8d82a69d/minimax-thumb.webp",
+          "preview": "images/be92e51d645a8d82a69d/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/be92e51d645a8d82a69d/qwen21-thumb.webp",
+          "preview": "images/be92e51d645a8d82a69d/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/be92e51d645a8d82a69d/z-image-thumb.webp",
+          "preview": "images/be92e51d645a8d82a69d/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/be92e51d645a8d82a69d/flux2-9b-thumb.webp",
+          "preview": "images/be92e51d645a8d82a69d/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1024,
@@ -197,6 +275,32 @@
         "qwen21": "images/7400170750b7a7a60739/qwen21.png",
         "z-image": "images/7400170750b7a7a60739/z-image.png",
         "flux2-9b": "images/7400170750b7a7a60739/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/7400170750b7a7a60739/moss-thumb.webp",
+          "preview": "images/7400170750b7a7a60739/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/7400170750b7a7a60739/krea2-thumb.webp",
+          "preview": "images/7400170750b7a7a60739/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/7400170750b7a7a60739/minimax-thumb.webp",
+          "preview": "images/7400170750b7a7a60739/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/7400170750b7a7a60739/qwen21-thumb.webp",
+          "preview": "images/7400170750b7a7a60739/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/7400170750b7a7a60739/z-image-thumb.webp",
+          "preview": "images/7400170750b7a7a60739/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/7400170750b7a7a60739/flux2-9b-thumb.webp",
+          "preview": "images/7400170750b7a7a60739/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {
@@ -250,6 +354,32 @@
         "z-image": "images/c998636382ad8c5a520b/z-image.png",
         "flux2-9b": "images/c998636382ad8c5a520b/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/c998636382ad8c5a520b/moss-thumb.webp",
+          "preview": "images/c998636382ad8c5a520b/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/c998636382ad8c5a520b/krea2-thumb.webp",
+          "preview": "images/c998636382ad8c5a520b/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/c998636382ad8c5a520b/minimax-thumb.webp",
+          "preview": "images/c998636382ad8c5a520b/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/c998636382ad8c5a520b/qwen21-thumb.webp",
+          "preview": "images/c998636382ad8c5a520b/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/c998636382ad8c5a520b/z-image-thumb.webp",
+          "preview": "images/c998636382ad8c5a520b/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/c998636382ad8c5a520b/flux2-9b-thumb.webp",
+          "preview": "images/c998636382ad8c5a520b/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1344,
@@ -301,6 +431,32 @@
         "qwen21": "images/b11b7e988d29d486856c/qwen21.png",
         "z-image": "images/b11b7e988d29d486856c/z-image.png",
         "flux2-9b": "images/b11b7e988d29d486856c/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/b11b7e988d29d486856c/moss-thumb.webp",
+          "preview": "images/b11b7e988d29d486856c/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/b11b7e988d29d486856c/krea2-thumb.webp",
+          "preview": "images/b11b7e988d29d486856c/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/b11b7e988d29d486856c/minimax-thumb.webp",
+          "preview": "images/b11b7e988d29d486856c/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/b11b7e988d29d486856c/qwen21-thumb.webp",
+          "preview": "images/b11b7e988d29d486856c/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/b11b7e988d29d486856c/z-image-thumb.webp",
+          "preview": "images/b11b7e988d29d486856c/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/b11b7e988d29d486856c/flux2-9b-thumb.webp",
+          "preview": "images/b11b7e988d29d486856c/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {
@@ -354,6 +510,32 @@
         "z-image": "images/bfdf380fc8f804a13e7e/z-image.png",
         "flux2-9b": "images/bfdf380fc8f804a13e7e/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/bfdf380fc8f804a13e7e/moss-thumb.webp",
+          "preview": "images/bfdf380fc8f804a13e7e/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/bfdf380fc8f804a13e7e/krea2-thumb.webp",
+          "preview": "images/bfdf380fc8f804a13e7e/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/bfdf380fc8f804a13e7e/minimax-thumb.webp",
+          "preview": "images/bfdf380fc8f804a13e7e/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/bfdf380fc8f804a13e7e/qwen21-thumb.webp",
+          "preview": "images/bfdf380fc8f804a13e7e/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/bfdf380fc8f804a13e7e/z-image-thumb.webp",
+          "preview": "images/bfdf380fc8f804a13e7e/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/bfdf380fc8f804a13e7e/flux2-9b-thumb.webp",
+          "preview": "images/bfdf380fc8f804a13e7e/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1248,
@@ -405,6 +587,32 @@
         "qwen21": "images/b0afcb25ab5e5b76a58c/qwen21.png",
         "z-image": "images/b0afcb25ab5e5b76a58c/z-image.png",
         "flux2-9b": "images/b0afcb25ab5e5b76a58c/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/b0afcb25ab5e5b76a58c/moss-thumb.webp",
+          "preview": "images/b0afcb25ab5e5b76a58c/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/b0afcb25ab5e5b76a58c/krea2-thumb.webp",
+          "preview": "images/b0afcb25ab5e5b76a58c/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/b0afcb25ab5e5b76a58c/minimax-thumb.webp",
+          "preview": "images/b0afcb25ab5e5b76a58c/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/b0afcb25ab5e5b76a58c/qwen21-thumb.webp",
+          "preview": "images/b0afcb25ab5e5b76a58c/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/b0afcb25ab5e5b76a58c/z-image-thumb.webp",
+          "preview": "images/b0afcb25ab5e5b76a58c/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/b0afcb25ab5e5b76a58c/flux2-9b-thumb.webp",
+          "preview": "images/b0afcb25ab5e5b76a58c/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {
@@ -458,6 +666,32 @@
         "z-image": "images/231f31ec333d6e292462/z-image.png",
         "flux2-9b": "images/231f31ec333d6e292462/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/231f31ec333d6e292462/moss-thumb.webp",
+          "preview": "images/231f31ec333d6e292462/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/231f31ec333d6e292462/krea2-thumb.webp",
+          "preview": "images/231f31ec333d6e292462/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/231f31ec333d6e292462/minimax-thumb.webp",
+          "preview": "images/231f31ec333d6e292462/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/231f31ec333d6e292462/qwen21-thumb.webp",
+          "preview": "images/231f31ec333d6e292462/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/231f31ec333d6e292462/z-image-thumb.webp",
+          "preview": "images/231f31ec333d6e292462/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/231f31ec333d6e292462/flux2-9b-thumb.webp",
+          "preview": "images/231f31ec333d6e292462/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 832,
@@ -509,6 +743,32 @@
         "qwen21": "images/2a88c4cc626b9261c90e/qwen21.png",
         "z-image": "images/2a88c4cc626b9261c90e/z-image.png",
         "flux2-9b": "images/2a88c4cc626b9261c90e/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/2a88c4cc626b9261c90e/moss-thumb.webp",
+          "preview": "images/2a88c4cc626b9261c90e/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/2a88c4cc626b9261c90e/krea2-thumb.webp",
+          "preview": "images/2a88c4cc626b9261c90e/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/2a88c4cc626b9261c90e/minimax-thumb.webp",
+          "preview": "images/2a88c4cc626b9261c90e/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/2a88c4cc626b9261c90e/qwen21-thumb.webp",
+          "preview": "images/2a88c4cc626b9261c90e/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/2a88c4cc626b9261c90e/z-image-thumb.webp",
+          "preview": "images/2a88c4cc626b9261c90e/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/2a88c4cc626b9261c90e/flux2-9b-thumb.webp",
+          "preview": "images/2a88c4cc626b9261c90e/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {
@@ -562,6 +822,32 @@
         "z-image": "images/51bdca419a3a1d9b1087/z-image.png",
         "flux2-9b": "images/51bdca419a3a1d9b1087/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/51bdca419a3a1d9b1087/moss-thumb.webp",
+          "preview": "images/51bdca419a3a1d9b1087/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/51bdca419a3a1d9b1087/krea2-thumb.webp",
+          "preview": "images/51bdca419a3a1d9b1087/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/51bdca419a3a1d9b1087/minimax-thumb.webp",
+          "preview": "images/51bdca419a3a1d9b1087/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/51bdca419a3a1d9b1087/qwen21-thumb.webp",
+          "preview": "images/51bdca419a3a1d9b1087/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/51bdca419a3a1d9b1087/z-image-thumb.webp",
+          "preview": "images/51bdca419a3a1d9b1087/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/51bdca419a3a1d9b1087/flux2-9b-thumb.webp",
+          "preview": "images/51bdca419a3a1d9b1087/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1344,
@@ -613,6 +899,32 @@
         "qwen21": "images/731c65b6ec7e76424d57/qwen21.png",
         "z-image": "images/731c65b6ec7e76424d57/z-image.png",
         "flux2-9b": "images/731c65b6ec7e76424d57/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/731c65b6ec7e76424d57/moss-thumb.webp",
+          "preview": "images/731c65b6ec7e76424d57/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/731c65b6ec7e76424d57/krea2-thumb.webp",
+          "preview": "images/731c65b6ec7e76424d57/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/731c65b6ec7e76424d57/minimax-thumb.webp",
+          "preview": "images/731c65b6ec7e76424d57/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/731c65b6ec7e76424d57/qwen21-thumb.webp",
+          "preview": "images/731c65b6ec7e76424d57/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/731c65b6ec7e76424d57/z-image-thumb.webp",
+          "preview": "images/731c65b6ec7e76424d57/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/731c65b6ec7e76424d57/flux2-9b-thumb.webp",
+          "preview": "images/731c65b6ec7e76424d57/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {
@@ -666,6 +978,32 @@
         "z-image": "images/f9fa61e52c260ae507f4/z-image.png",
         "flux2-9b": "images/f9fa61e52c260ae507f4/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/f9fa61e52c260ae507f4/moss-thumb.webp",
+          "preview": "images/f9fa61e52c260ae507f4/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/f9fa61e52c260ae507f4/krea2-thumb.webp",
+          "preview": "images/f9fa61e52c260ae507f4/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/f9fa61e52c260ae507f4/minimax-thumb.webp",
+          "preview": "images/f9fa61e52c260ae507f4/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/f9fa61e52c260ae507f4/qwen21-thumb.webp",
+          "preview": "images/f9fa61e52c260ae507f4/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/f9fa61e52c260ae507f4/z-image-thumb.webp",
+          "preview": "images/f9fa61e52c260ae507f4/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/f9fa61e52c260ae507f4/flux2-9b-thumb.webp",
+          "preview": "images/f9fa61e52c260ae507f4/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1152,
@@ -718,6 +1056,32 @@
         "z-image": "images/6535ce8ade216ea800b6/z-image.png",
         "flux2-9b": "images/6535ce8ade216ea800b6/flux2-9b.png"
       },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/6535ce8ade216ea800b6/moss-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/6535ce8ade216ea800b6/krea2-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/6535ce8ade216ea800b6/minimax-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/6535ce8ade216ea800b6/qwen21-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/6535ce8ade216ea800b6/z-image-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/6535ce8ade216ea800b6/flux2-9b-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/flux2-9b-preview.webp"
+        }
+      },
       "image_sizes": {
         "moss": {
           "width": 1024,
@@ -769,6 +1133,32 @@
         "qwen21": "images/0f8ea0eaaee5938d61d6/qwen21.png",
         "z-image": "images/0f8ea0eaaee5938d61d6/z-image.png",
         "flux2-9b": "images/0f8ea0eaaee5938d61d6/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/moss-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/krea2-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/minimax-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/qwen21-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/z-image-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/flux2-9b-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/flux2-9b-preview.webp"
+        }
       },
       "image_sizes": {
         "moss": {

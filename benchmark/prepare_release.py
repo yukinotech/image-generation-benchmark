@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))  # The portable Python ._pth isolates script directories.
 from artifacts import RUNS, read_json
-from frontend.serve import RUN_NAME, STATIC, export_site
+from frontend.serve import RUN_NAME, STATIC, WEBP_VARIANTS, export_site, webp_paths
 from run import benchmark_lock, image_complete, plan_rows
 
 MANAGED = ("benchmark", "docs")
@@ -100,6 +100,34 @@ def audit_png(file):
     return size
 
 
+def audit_webp(file, original_size, long_edge):
+    from PIL import Image
+
+    with Image.open(file) as image:
+        if image.format != "WEBP":
+            raise ValueError(f"不是有效的 WebP：{file.name}")
+        image.load()
+        width, height = image.size
+    source_width, source_height = original_size
+    if (max(width, height) != min(max(original_size), long_edge)
+            or width > source_width or height > source_height
+            or abs(width * source_height - height * source_width) > max(original_size)):
+        raise ValueError(f"WebP 尺寸不符合预览规则：{file.name}")
+
+    with file.open("rb") as stream:
+        signature, length, kind = struct.unpack("<4sI4s", stream.read(12))
+        end = file.stat().st_size
+        if signature != b"RIFF" or kind != b"WEBP" or length + 8 != end:
+            raise ValueError(f"WebP 容器无效：{file.name}")
+        while stream.tell() < end:
+            chunk, length = struct.unpack("<4sI", stream.read(8))
+            if chunk not in {b"VP8X", b"ALPH", b"VP8 "}:
+                raise ValueError(f"WebP 含额外数据块 {chunk!r}：{file.name}")
+            stream.seek(length + length % 2, 1)
+        if stream.tell() != end:
+            raise ValueError(f"WebP 数据块长度无效：{file.name}")
+
+
 def audit_site(docs):
     catalog = read_json(docs / "results.json")
     expected = {name for name, _ in STATIC.values()} | {".nojekyll", "results.json"}
@@ -114,12 +142,21 @@ def audit_site(docs):
                 raise ValueError("公开 JSON 路径无效。")
             read_json(docs / path)
             expected.add(path)
+        if case["image_previews"].keys() != case["images"].keys():
+            raise ValueError("WebP 公开清单与 PNG 不一致。")
         for model, path in case["images"].items():
             if not PUBLIC_IMAGE.fullmatch(path):
                 raise ValueError("公开图片路径无效。")
             size = case["image_sizes"][model]
-            if audit_png(docs / path) != (size["width"], size["height"]):
+            original_size = (size["width"], size["height"])
+            if audit_png(docs / path) != original_size:
                 raise ValueError(f"图片尺寸与公开清单不一致：{path}")
+            variants = webp_paths(path)
+            if case["image_previews"][model] != variants:
+                raise ValueError(f"WebP 路径与公开清单不一致：{path}")
+            for variant, webp in variants.items():
+                audit_webp(docs / webp, original_size, WEBP_VARIANTS[variant][1])
+                expected.add(webp)
             record = read_json(docs / case["image_metadata"][model])
             if (record["model"]["id"] != model or record["seed"] != case["seed"]
                     or record["width"] != size["width"] or record["height"] != size["height"]):
@@ -141,7 +178,7 @@ def audit_text(stage):
         "疑似凭据": r"\b(?:gh[pousr]_[a-z0-9]{20,}|github_pat_[a-z0-9_]{20,}|sk-(?:proj-)?[a-z0-9_-]{24,}|akia[a-z0-9]{16})\b|-----BEGIN [A-Z ]*PRIVATE KEY-----",
     }
     for file in stage.rglob("*"):
-        if not file.is_file() or file.suffix == ".png":
+        if not file.is_file() or file.suffix in {".png", ".webp"}:
             continue
         value = file.read_text(encoding="utf-8-sig")
         for label, regex in patterns.items():
@@ -210,7 +247,7 @@ def main():
             shutil.rmtree(stage)
         else:
             print(f"保留原发布文件备份：{previous}", file=sys.stderr)
-    print(f"已准备 {groups} 组、{count} 张脱敏图片和对应 JSON。")
+    print(f"已准备 {groups} 组、{count} 张脱敏 PNG、{count * len(WEBP_VARIANTS)} 张 WebP 和对应 JSON。")
     print("请审阅发布仓库中的 Git 差异，然后提交并推送。")
 
 
