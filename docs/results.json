@@ -28,6 +28,11 @@
       "id": "gpt-image",
       "label": "GPT 生图",
       "reference": true
+    },
+    {
+      "id": "mai-image-2-7-flash",
+      "label": "MAI Image 2.7 Flash",
+      "reference": true
     }
   ],
   "cases": [
@@ -1392,7 +1397,8 @@
         "qwen21": "images/e5adf10efc42526229c3/qwen21.png",
         "z-image": "images/e5adf10efc42526229c3/z-image.png",
         "flux2-9b": "images/e5adf10efc42526229c3/flux2-9b.png",
-        "gpt-image": "images/e5adf10efc42526229c3/gpt-image.png"
+        "gpt-image": "images/e5adf10efc42526229c3/gpt-image.png",
+        "mai-image-2-7-flash": "images/e5adf10efc42526229c3/mai-image-2-7-flash.png"
       },
       "image_previews": {
         "moss": {
@@ -1422,6 +1428,10 @@
         "gpt-image": {
           "thumbnail": "images/e5adf10efc42526229c3/gpt-image-thumb.webp",
           "preview": "images/e5adf10efc42526229c3/gpt-image-preview.webp"
+        },
+        "mai-image-2-7-flash": {
+          "thumbnail": "images/e5adf10efc42526229c3/mai-image-2-7-flash-thumb.webp",
+          "preview": "images/e5adf10efc42526229c3/mai-image-2-7-flash-preview.webp"
         }
       },
       "image_sizes": {
@@ -1452,6 +1462,10 @@
         "gpt-image": {
           "width": 1254,
           "height": 1254
+        },
+        "mai-image-2-7-flash": {
+          "width": 1024,
+          "height": 1024
         }
       },
       "image_metadata": {
@@ -1461,7 +1475,8 @@
         "qwen21": "metadata/e5adf10efc42526229c3/qwen21.json",
         "z-image": "metadata/e5adf10efc42526229c3/z-image.json",
         "flux2-9b": "metadata/e5adf10efc42526229c3/flux2-9b.json",
-        "gpt-image": "metadata/e5adf10efc42526229c3/gpt-image.json"
+        "gpt-image": "metadata/e5adf10efc42526229c3/gpt-image.json",
+        "mai-image-2-7-flash": "metadata/e5adf10efc42526229c3/mai-image-2-7-flash.json"
       },
       "metadata": "metadata/e5adf10efc42526229c3.json"
     }

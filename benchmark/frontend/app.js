@@ -205,7 +205,8 @@ function renderOverview() {
   }
   $("comparison-body").replaceChildren(rows);
   const localModels = data.models.filter(model => !model.reference).length;
-  const reference = data.models.some(model => model.reference) ? " · GPT 闭源参考" : "";
+  const referenceCount = data.models.length - localModels;
+  const reference = referenceCount ? ` · ${referenceCount} 个闭源参考` : "";
   $("table-summary").textContent = `${cases.length} 组对比 · ${localModels} 个模型${reference}`;
   updateComparisonLayout();
 }
@@ -351,7 +352,7 @@ function render() {
   $("case-summary").textContent = caseLabel({ ...sharedSize(current), ratio: current.ratio, seed: current.seed });
   const models = data.models.filter(model => current.images[model.id]);
   if (models.some(model => model.reference)) {
-    $("page-description").textContent = "本地模型共用同一提示词、目标画幅和 Seed。GPT 生图是同提示词的闭源参考，Seed 和生成参数未提供。";
+    $("page-description").textContent = "本地模型共用同一提示词、目标画幅和 Seed。闭源参考图使用同一提示词，Seed 和生成参数未提供。";
   }
   fillModels(models, () => renderCards(current, models));
   renderCards(current, models);

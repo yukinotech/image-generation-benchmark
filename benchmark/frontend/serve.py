@@ -23,9 +23,14 @@ from artifacts import RUNS, job_image_path, read_json
 
 RUN_NAME = re.compile(r"[A-Za-z0-9_-]{1,48}", re.ASCII)
 IMAGE = re.compile(r"images/[\w-]+/p[0-9]+-r[0-9]+-[0-9]+x[0-9]+-s[0-9]+\.png", re.ASCII)
-GPT_REFERENCE_ID = "gpt-image"
-GPT_REFERENCE_LABEL = "GPT 生图"
-REFERENCE_IMAGE = re.compile(r"references/[a-f0-9]{20}/gpt-image\.png", re.ASCII)
+REFERENCE_MODELS = {
+    "gpt-image": "GPT 生图",
+    "mai-image-2-7-flash": "MAI Image 2.7 Flash",
+}
+REFERENCE_IMAGE = re.compile(
+    r"references/[a-f0-9]{20}/(?:" + "|".join(map(re.escape, REFERENCE_MODELS)) + r")\.png",
+    re.ASCII,
+)
 WEBP_VARIANTS = {
     "thumbnail": ("-thumb.webp", 768, 82),
     "preview": ("-preview.webp", 2048, 88),
@@ -159,25 +164,27 @@ def public_catalog(*, static=False):
                                 "pixels": image_sizes[model]["width"] * image_sizes[model]["height"], **settings}
                                for model, settings in parameters.items()],
                 }
-                reference = f"references/{case_id}/{GPT_REFERENCE_ID}.png"
-                reference_path = directory / reference
-                if reference_path.is_file() and reference_path.resolve().is_relative_to(directory.resolve()):
+                for reference_id, label in REFERENCE_MODELS.items():
+                    reference = f"references/{case_id}/{reference_id}.png"
+                    reference_path = directory / reference
+                    if not reference_path.is_file() or not reference_path.resolve().is_relative_to(directory.resolve()):
+                        continue
                     with Image.open(reference_path, formats=["PNG"]) as image:
                         reference_size = {"width": image.width, "height": image.height}
-                    url = f"images/{case_id}/{GPT_REFERENCE_ID}.png"
+                    url = f"images/{case_id}/{reference_id}.png"
                     if static:
                         assets[url] = reference_path
                     else:
                         url = f"runs/{quote(name, safe='')}/{reference}"
-                    images[GPT_REFERENCE_ID] = url
-                    image_previews[GPT_REFERENCE_ID] = webp_paths(url)
-                    image_sizes[GPT_REFERENCE_ID] = reference_size
-                    reference_metadata = f"metadata/{case_id}/{GPT_REFERENCE_ID}.json"
-                    image_metadata[GPT_REFERENCE_ID] = reference_metadata
+                    images[reference_id] = url
+                    image_previews[reference_id] = webp_paths(url)
+                    image_sizes[reference_id] = reference_size
+                    reference_metadata = f"metadata/{case_id}/{reference_id}.json"
+                    image_metadata[reference_id] = reference_metadata
                     metadata[reference_metadata] = {
                         "case_id": case_id, "prompt": prompts[prompt], "ratio": ratio, "seed": None,
                         **reference_size, "pixels": reference_size["width"] * reference_size["height"],
-                        "model": {"id": GPT_REFERENCE_ID, "label": GPT_REFERENCE_LABEL},
+                        "model": {"id": reference_id, "label": label},
                         "reference": True, "source": "user_provided",
                     }
                 cases.append({
@@ -191,7 +198,8 @@ def public_catalog(*, static=False):
     return {
         "models": [
             *({"id": model, "label": label} for model, label in models.items()),
-            {"id": GPT_REFERENCE_ID, "label": GPT_REFERENCE_LABEL, "reference": True},
+            *({"id": model, "label": label, "reference": True}
+              for model, label in REFERENCE_MODELS.items()),
         ],
         "cases": cases,
     }, assets, metadata
