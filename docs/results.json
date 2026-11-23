@@ -1273,6 +1273,84 @@
         "flux2-9b": "metadata/d772240cee21d99480cf/flux2-9b.json"
       },
       "metadata": "metadata/d772240cee21d99480cf.json"
+    },
+    {
+      "id": "01a8c0e7656151e97141",
+      "prompt": "暗黑奇幻游戏角色设定板，深灰渐变摄影棚背景。同一名高大男性重甲骑士以正面、背面和去除披肩后的正面全身三个视图并排展示，姿势和比例一致。面部完全藏在尖棱封闭头盔内，深色钢铁板甲有尖角肩甲、分片胸甲、护臂、膝甲与胫甲；颈肩围着磨损的灰黑布披肩，腰间是层叠的暗褐皮革裙甲和绑带。视图之间放置独立肩甲与胸甲小特写。写实游戏概念美术，金属磨痕、皮革粗糙度和布料褶皱清晰，冷灰主色，柔和顶侧光，完整展示脚部与轮廓。 输出一张完整图像，保留上述构图和视图数量；不添加网页边框、作者签名或水印。\n",
+      "translation": "暗黑奇幻游戏角色设定板，深灰渐变摄影棚背景。同一名高大男性重甲骑士以正面、背面和去除披肩后的正面全身三个视图并排展示，姿势和比例一致。面部完全藏在尖棱封闭头盔内，深色钢铁板甲有尖角肩甲、分片胸甲、护臂、膝甲与胫甲；颈肩围着磨损的灰黑布披肩，腰间是层叠的暗褐皮革裙甲和绑带。视图之间放置独立肩甲与胸甲小特写。写实游戏概念美术，金属磨痕、皮革粗糙度和布料褶皱清晰，冷灰主色，柔和顶侧光，完整展示脚部与轮廓。 输出一张完整图像，保留上述构图和视图数量；不添加网页边框、作者签名或水印。\n",
+      "ratio": "16:9",
+      "width": 1344,
+      "height": 768,
+      "seed": "484256157",
+      "images": {
+        "moss": "images/01a8c0e7656151e97141/moss.png",
+        "krea2": "images/01a8c0e7656151e97141/krea2.png",
+        "minimax": "images/01a8c0e7656151e97141/minimax.png",
+        "qwen21": "images/01a8c0e7656151e97141/qwen21.png",
+        "z-image": "images/01a8c0e7656151e97141/z-image.png",
+        "flux2-9b": "images/01a8c0e7656151e97141/flux2-9b.png"
+      },
+      "image_previews": {
+        "moss": {
+          "thumbnail": "images/01a8c0e7656151e97141/moss-thumb.webp",
+          "preview": "images/01a8c0e7656151e97141/moss-preview.webp"
+        },
+        "krea2": {
+          "thumbnail": "images/01a8c0e7656151e97141/krea2-thumb.webp",
+          "preview": "images/01a8c0e7656151e97141/krea2-preview.webp"
+        },
+        "minimax": {
+          "thumbnail": "images/01a8c0e7656151e97141/minimax-thumb.webp",
+          "preview": "images/01a8c0e7656151e97141/minimax-preview.webp"
+        },
+        "qwen21": {
+          "thumbnail": "images/01a8c0e7656151e97141/qwen21-thumb.webp",
+          "preview": "images/01a8c0e7656151e97141/qwen21-preview.webp"
+        },
+        "z-image": {
+          "thumbnail": "images/01a8c0e7656151e97141/z-image-thumb.webp",
+          "preview": "images/01a8c0e7656151e97141/z-image-preview.webp"
+        },
+        "flux2-9b": {
+          "thumbnail": "images/01a8c0e7656151e97141/flux2-9b-thumb.webp",
+          "preview": "images/01a8c0e7656151e97141/flux2-9b-preview.webp"
+        }
+      },
+      "image_sizes": {
+        "moss": {
+          "width": 1344,
+          "height": 768
+        },
+        "krea2": {
+          "width": 1344,
+          "height": 768
+        },
+        "minimax": {
+          "width": 5472,
+          "height": 3072
+        },
+        "qwen21": {
+          "width": 2752,
+          "height": 1536
+        },
+        "z-image": {
+          "width": 1344,
+          "height": 768
+        },
+        "flux2-9b": {
+          "width": 1344,
+          "height": 768
+        }
+      },
+      "image_metadata": {
+        "moss": "metadata/01a8c0e7656151e97141/moss.json",
+        "krea2": "metadata/01a8c0e7656151e97141/krea2.json",
+        "minimax": "metadata/01a8c0e7656151e97141/minimax.json",
+        "qwen21": "metadata/01a8c0e7656151e97141/qwen21.json",
+        "z-image": "metadata/01a8c0e7656151e97141/z-image.json",
+        "flux2-9b": "metadata/01a8c0e7656151e97141/flux2-9b.json"
+      },
+      "metadata": "metadata/01a8c0e7656151e97141.json"
     }
   ]
 }

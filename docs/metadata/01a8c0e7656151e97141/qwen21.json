@@ -1,0 +1,35 @@
+{
+  "case_id": "01a8c0e7656151e97141",
+  "prompt": "暗黑奇幻游戏角色设定板，深灰渐变摄影棚背景。同一名高大男性重甲骑士以正面、背面和去除披肩后的正面全身三个视图并排展示，姿势和比例一致。面部完全藏在尖棱封闭头盔内，深色钢铁板甲有尖角肩甲、分片胸甲、护臂、膝甲与胫甲；颈肩围着磨损的灰黑布披肩，腰间是层叠的暗褐皮革裙甲和绑带。视图之间放置独立肩甲与胸甲小特写。写实游戏概念美术，金属磨痕、皮革粗糙度和布料褶皱清晰，冷灰主色，柔和顶侧光，完整展示脚部与轮廓。 输出一张完整图像，保留上述构图和视图数量；不添加网页边框、作者签名或水印。\n",
+  "ratio": "16:9",
+  "seed": "484256157",
+  "width": 2752,
+  "height": 1536,
+  "pixels": 4227072,
+  "model": {
+    "id": "qwen21",
+    "label": "Qwen-Image 2.1 INT8",
+    "unet": "qwen_image_2.1_int8_convrot.safetensors",
+    "clip": "qwen3vl_8b_int8_convrot.safetensors",
+    "vae": "qwen_image_2.1_vae_bf16.safetensors",
+    "steps": 25,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "template": "image_qwen_image_2_1_t2i",
+    "execution_mode": "single",
+    "workflow_options": {
+      "TextEncodeQwenImage21": {
+        "resolution": 1024,
+        "negative_prompt": ""
+      },
+      "QwenImage21Cache": {
+        "device": "auto",
+        "dtype": "default"
+      },
+      "KSampler": {
+        "denoise": 1.0
+      }
+    }
+  }
+}
