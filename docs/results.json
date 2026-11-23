@@ -1059,7 +1059,8 @@
         "minimax": "images/6535ce8ade216ea800b6/minimax.png",
         "qwen21": "images/6535ce8ade216ea800b6/qwen21.png",
         "z-image": "images/6535ce8ade216ea800b6/z-image.png",
-        "flux2-9b": "images/6535ce8ade216ea800b6/flux2-9b.png"
+        "flux2-9b": "images/6535ce8ade216ea800b6/flux2-9b.png",
+        "gpt-image": "images/6535ce8ade216ea800b6/gpt-image.png"
       },
       "image_previews": {
         "moss": {
@@ -1085,6 +1086,10 @@
         "flux2-9b": {
           "thumbnail": "images/6535ce8ade216ea800b6/flux2-9b-thumb.webp",
           "preview": "images/6535ce8ade216ea800b6/flux2-9b-preview.webp"
+        },
+        "gpt-image": {
+          "thumbnail": "images/6535ce8ade216ea800b6/gpt-image-thumb.webp",
+          "preview": "images/6535ce8ade216ea800b6/gpt-image-preview.webp"
         }
       },
       "image_sizes": {
@@ -1111,6 +1116,10 @@
         "flux2-9b": {
           "width": 1024,
           "height": 1024
+        },
+        "gpt-image": {
+          "width": 1254,
+          "height": 1254
         }
       },
       "image_metadata": {
@@ -1119,7 +1128,8 @@
         "minimax": "metadata/6535ce8ade216ea800b6/minimax.json",
         "qwen21": "metadata/6535ce8ade216ea800b6/qwen21.json",
         "z-image": "metadata/6535ce8ade216ea800b6/z-image.json",
-        "flux2-9b": "metadata/6535ce8ade216ea800b6/flux2-9b.json"
+        "flux2-9b": "metadata/6535ce8ade216ea800b6/flux2-9b.json",
+        "gpt-image": "metadata/6535ce8ade216ea800b6/gpt-image.json"
       },
       "metadata": "metadata/6535ce8ade216ea800b6.json"
     },
