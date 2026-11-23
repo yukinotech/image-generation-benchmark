@@ -1147,7 +1147,8 @@
         "minimax": "images/0f8ea0eaaee5938d61d6/minimax.png",
         "qwen21": "images/0f8ea0eaaee5938d61d6/qwen21.png",
         "z-image": "images/0f8ea0eaaee5938d61d6/z-image.png",
-        "flux2-9b": "images/0f8ea0eaaee5938d61d6/flux2-9b.png"
+        "flux2-9b": "images/0f8ea0eaaee5938d61d6/flux2-9b.png",
+        "gpt-image": "images/0f8ea0eaaee5938d61d6/gpt-image.png"
       },
       "image_previews": {
         "moss": {
@@ -1173,6 +1174,10 @@
         "flux2-9b": {
           "thumbnail": "images/0f8ea0eaaee5938d61d6/flux2-9b-thumb.webp",
           "preview": "images/0f8ea0eaaee5938d61d6/flux2-9b-preview.webp"
+        },
+        "gpt-image": {
+          "thumbnail": "images/0f8ea0eaaee5938d61d6/gpt-image-thumb.webp",
+          "preview": "images/0f8ea0eaaee5938d61d6/gpt-image-preview.webp"
         }
       },
       "image_sizes": {
@@ -1199,6 +1204,10 @@
         "flux2-9b": {
           "width": 768,
           "height": 1344
+        },
+        "gpt-image": {
+          "width": 941,
+          "height": 1672
         }
       },
       "image_metadata": {
@@ -1207,7 +1216,8 @@
         "minimax": "metadata/0f8ea0eaaee5938d61d6/minimax.json",
         "qwen21": "metadata/0f8ea0eaaee5938d61d6/qwen21.json",
         "z-image": "metadata/0f8ea0eaaee5938d61d6/z-image.json",
-        "flux2-9b": "metadata/0f8ea0eaaee5938d61d6/flux2-9b.json"
+        "flux2-9b": "metadata/0f8ea0eaaee5938d61d6/flux2-9b.json",
+        "gpt-image": "metadata/0f8ea0eaaee5938d61d6/gpt-image.json"
       },
       "metadata": "metadata/0f8ea0eaaee5938d61d6.json"
     },
