@@ -23,6 +23,11 @@
     {
       "id": "flux2-9b",
       "label": "FLUX.2 Klein 9B FP8"
+    },
+    {
+      "id": "gpt-image",
+      "label": "GPT 生图",
+      "reference": true
     }
   ],
   "cases": [
@@ -1366,7 +1371,8 @@
         "minimax": "images/e5adf10efc42526229c3/minimax.png",
         "qwen21": "images/e5adf10efc42526229c3/qwen21.png",
         "z-image": "images/e5adf10efc42526229c3/z-image.png",
-        "flux2-9b": "images/e5adf10efc42526229c3/flux2-9b.png"
+        "flux2-9b": "images/e5adf10efc42526229c3/flux2-9b.png",
+        "gpt-image": "images/e5adf10efc42526229c3/gpt-image.png"
       },
       "image_previews": {
         "moss": {
@@ -1392,6 +1398,10 @@
         "flux2-9b": {
           "thumbnail": "images/e5adf10efc42526229c3/flux2-9b-thumb.webp",
           "preview": "images/e5adf10efc42526229c3/flux2-9b-preview.webp"
+        },
+        "gpt-image": {
+          "thumbnail": "images/e5adf10efc42526229c3/gpt-image-thumb.webp",
+          "preview": "images/e5adf10efc42526229c3/gpt-image-preview.webp"
         }
       },
       "image_sizes": {
@@ -1418,6 +1428,10 @@
         "flux2-9b": {
           "width": 1024,
           "height": 1024
+        },
+        "gpt-image": {
+          "width": 1254,
+          "height": 1254
         }
       },
       "image_metadata": {
@@ -1426,7 +1440,8 @@
         "minimax": "metadata/e5adf10efc42526229c3/minimax.json",
         "qwen21": "metadata/e5adf10efc42526229c3/qwen21.json",
         "z-image": "metadata/e5adf10efc42526229c3/z-image.json",
-        "flux2-9b": "metadata/e5adf10efc42526229c3/flux2-9b.json"
+        "flux2-9b": "metadata/e5adf10efc42526229c3/flux2-9b.json",
+        "gpt-image": "metadata/e5adf10efc42526229c3/gpt-image.json"
       },
       "metadata": "metadata/e5adf10efc42526229c3.json"
     }

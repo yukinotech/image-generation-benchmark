@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))  # The portable Python ._pth isolates script directories.
 from artifacts import RUNS, read_json
-from frontend.serve import RUN_NAME, STATIC, WEBP_VARIANTS, export_site, webp_paths
+from frontend.serve import GPT_REFERENCE_ID, RUN_NAME, STATIC, WEBP_VARIANTS, export_site, webp_paths
 from run import benchmark_lock, image_complete, plan_rows
 
 MANAGED = ("benchmark", "docs")
@@ -158,7 +158,10 @@ def audit_site(docs):
                 audit_webp(docs / webp, original_size, WEBP_VARIANTS[variant][1])
                 expected.add(webp)
             record = read_json(docs / case["image_metadata"][model])
-            if (record["model"]["id"] != model or record["seed"] != case["seed"]
+            is_reference = model == GPT_REFERENCE_ID
+            expected_seed = None if is_reference else case["seed"]
+            if (record["model"]["id"] != model or record["seed"] != expected_seed
+                    or record.get("reference", False) != is_reference
                     or record["width"] != size["width"] or record["height"] != size["height"]):
                 raise ValueError(f"单图元信息与公开清单不一致：{path}")
             expected.add(path)

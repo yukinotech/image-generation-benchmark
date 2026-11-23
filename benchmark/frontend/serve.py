@@ -23,6 +23,9 @@ from artifacts import RUNS, job_image_path, read_json
 
 RUN_NAME = re.compile(r"[A-Za-z0-9_-]{1,48}", re.ASCII)
 IMAGE = re.compile(r"images/[\w-]+/p[0-9]+-r[0-9]+-[0-9]+x[0-9]+-s[0-9]+\.png", re.ASCII)
+GPT_REFERENCE_ID = "gpt-image"
+GPT_REFERENCE_LABEL = "GPT 生图"
+REFERENCE_IMAGE = re.compile(r"references/[a-f0-9]{20}/gpt-image\.png", re.ASCII)
 WEBP_VARIANTS = {
     "thumbnail": ("-thumb.webp", 768, 82),
     "preview": ("-preview.webp", 2048, 88),
@@ -73,6 +76,8 @@ def webp_paths(original):
 
 
 def public_catalog(*, static=False):
+    from PIL import Image
+
     models = {}
     cases = []
     assets = {}
@@ -154,6 +159,27 @@ def public_catalog(*, static=False):
                                 "pixels": image_sizes[model]["width"] * image_sizes[model]["height"], **settings}
                                for model, settings in parameters.items()],
                 }
+                reference = f"references/{case_id}/{GPT_REFERENCE_ID}.png"
+                reference_path = directory / reference
+                if reference_path.is_file() and reference_path.resolve().is_relative_to(directory.resolve()):
+                    with Image.open(reference_path, formats=["PNG"]) as image:
+                        reference_size = {"width": image.width, "height": image.height}
+                    url = f"images/{case_id}/{GPT_REFERENCE_ID}.png"
+                    if static:
+                        assets[url] = reference_path
+                    else:
+                        url = f"runs/{quote(name, safe='')}/{reference}"
+                    images[GPT_REFERENCE_ID] = url
+                    image_previews[GPT_REFERENCE_ID] = webp_paths(url)
+                    image_sizes[GPT_REFERENCE_ID] = reference_size
+                    reference_metadata = f"metadata/{case_id}/{GPT_REFERENCE_ID}.json"
+                    image_metadata[GPT_REFERENCE_ID] = reference_metadata
+                    metadata[reference_metadata] = {
+                        "case_id": case_id, "prompt": prompts[prompt], "ratio": ratio, "seed": None,
+                        **reference_size, "pixels": reference_size["width"] * reference_size["height"],
+                        "model": {"id": GPT_REFERENCE_ID, "label": GPT_REFERENCE_LABEL},
+                        "reference": True, "source": "user_provided",
+                    }
                 cases.append({
                     "id": case_id, "prompt": prompts[prompt],
                     "translation": translation if isinstance(translation, str) else None,
@@ -163,7 +189,10 @@ def public_catalog(*, static=False):
                     "metadata": metadata_path,
                 })
     return {
-        "models": [{"id": model, "label": label} for model, label in models.items()],
+        "models": [
+            *({"id": model, "label": label} for model, label in models.items()),
+            {"id": GPT_REFERENCE_ID, "label": GPT_REFERENCE_LABEL, "reference": True},
+        ],
         "cases": cases,
     }, assets, metadata
 
@@ -278,7 +307,7 @@ class Viewer(BaseHTTPRequestHandler):
                     relative = relative.removesuffix(suffix) + ".png"
                     variant = label
                     break
-            if name in run_dirs() and IMAGE.fullmatch(relative):
+            if name in run_dirs() and (IMAGE.fullmatch(relative) or REFERENCE_IMAGE.fullmatch(relative)):
                 directory = (RUNS / name).resolve()
                 file = (directory / relative).resolve()
                 if file.is_relative_to(directory):

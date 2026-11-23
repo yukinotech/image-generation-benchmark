@@ -80,29 +80,38 @@ function imageSize(item, model) {
   return item.image_sizes?.[model] || { width: item.width, height: item.height };
 }
 
+function imageDescription(item, model) {
+  const size = imageSize(item, model.id);
+  return model.reference
+    ? `${size.width} × ${size.height} · 闭源参考 · Seed 未提供`
+    : caseLabel({ ...item, ...size });
+}
+
 function imageDetails(item, model, size) {
   const details = element("div", "", "image-details");
   details.append(element("span", `${size.width} × ${size.height}`, "row-meta"));
   const source = item.image_metadata?.[model.id];
   if (!source) return details;
+  const title = model.reference ? "参考图信息" : "复现元信息";
   const trigger = element("button", "", "metadata-trigger");
   trigger.type = "button";
-  trigger.dataset.tooltip = "查看复现元信息";
-  trigger.setAttribute("aria-label", `查看复现元信息 · ${model.label}`);
+  trigger.dataset.tooltip = `查看${title}`;
+  trigger.setAttribute("aria-label", `查看${title} · ${model.label}`);
   trigger.setAttribute("aria-haspopup", "dialog");
   const icon = element("span", "{}", "metadata-icon");
   icon.setAttribute("aria-hidden", "true");
   trigger.append(icon);
-  trigger.addEventListener("click", () => openMetadata(source, model.label));
+  trigger.addEventListener("click", () => openMetadata(source, model.label, title));
   details.append(trigger);
   return details;
 }
 
-async function openMetadata(source, label) {
+async function openMetadata(source, label, title) {
   const request = ++metadataRequest;
   const dialog = $("metadata-dialog");
   const copy = $("metadata-copy");
   const status = $("metadata-status");
+  $("metadata-title").textContent = title;
   $("metadata-model").textContent = label;
   $("metadata-code").textContent = "";
   $("metadata-block").hidden = true;
@@ -121,7 +130,7 @@ async function openMetadata(source, label) {
     status.hidden = true;
     copy.disabled = false;
   } catch {
-    if (request === metadataRequest && dialog.open) status.textContent = "无法读取复现元信息。";
+    if (request === metadataRequest && dialog.open) status.textContent = `无法读取${title}。`;
   }
 }
 
@@ -172,7 +181,7 @@ function renderOverview() {
       if (original) {
         const { thumbnail, preview } = item.image_previews[model.id];
         const actual = imageSize(item, model.id);
-        const description = caseLabel({ ...item, ...actual });
+        const description = imageDescription(item, model);
         const button = element("button", "", "result-link");
         button.type = "button";
         button.setAttribute("aria-label", `放大查看 ${model.label} · ${description}`);
@@ -188,14 +197,16 @@ function renderOverview() {
         button.addEventListener("click", () => openPreview(gallery, position));
         cell.append(button, imageDetails(item, model, actual));
       } else {
-        cell.append(element("span", "暂无图片", "result-link"));
+        cell.append(element("span", model.reference ? "—" : "暂无图片", "result-link"));
       }
       row.append(cell);
     }
     rows.append(row);
   }
   $("comparison-body").replaceChildren(rows);
-  $("table-summary").textContent = `${cases.length} 组对比 · ${data.models.length} 个模型`;
+  const localModels = data.models.filter(model => !model.reference).length;
+  const reference = data.models.some(model => model.reference) ? " · GPT 闭源参考" : "";
+  $("table-summary").textContent = `${cases.length} 组对比 · ${localModels} 个模型${reference}`;
   updateComparisonLayout();
 }
 
@@ -339,6 +350,9 @@ function render() {
   }
   $("case-summary").textContent = caseLabel({ ...sharedSize(current), ratio: current.ratio, seed: current.seed });
   const models = data.models.filter(model => current.images[model.id]);
+  if (models.some(model => model.reference)) {
+    $("page-description").textContent = "本地模型共用同一提示词、目标画幅和 Seed。GPT 生图是同提示词的闭源参考，Seed 和生成参数未提供。";
+  }
   fillModels(models, () => renderCards(current, models));
   renderCards(current, models);
 }
@@ -349,7 +363,7 @@ function renderCards(current, models) {
     image: current.image_previews[model.id].preview,
     original: current.images[model.id],
     model: model.label,
-    description: caseLabel({ ...current, ...imageSize(current, model.id) }),
+    description: imageDescription(current, model),
   }));
   const cards = visible.map((model, index) => {
     const size = imageSize(current, model.id);

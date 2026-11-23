@@ -104,6 +104,8 @@
 
 ### 导出静态站点
 
+「GPT 生图」栏展示手动加入的闭源参考图。将同提示词生成的 PNG 放到 `runs/<批次>/references/<case ID>/gpt-image.png`，其中 case ID 来自该组详情页链接的 `case` 参数。查看器会自动配对，发布脚本会生成脱敏原图和两档 WebP。参考图保留实际尺寸，Seed 与生成参数记录为未提供。
+
 ```powershell
 .\benchmark\frontend\run.cmd --export-dir .\benchmark-public
 ```

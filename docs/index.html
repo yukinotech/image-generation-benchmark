@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ComfyUI · 文生图 Benchmark</title>
   <link rel="stylesheet" href="./style.css">
-  <script src="./app.js?v=webp" defer></script>
+  <script src="./app.js?v=gpt-reference" defer></script>
 </head>
 <body>
   <header class="bar">
@@ -22,7 +22,7 @@
     </div>
     <section id="resolution-guide" class="resolution-guide" aria-labelledby="resolution-heading">
       <h2 id="resolution-heading">模型分辨率参考</h2>
-      <p>同组图片使用相同目标画幅、提示词和 Seed。每个模型在同一画幅使用固定尺寸。MiniMax 使用约 16.8 MP，Qwen-Image 2.1 使用原生 2K 预设，其余模型使用约 1 MP。宽高按 32 像素对齐，实际比例可能略有偏差。每张图片的实际尺寸见表格和元信息。</p>
+      <p>同组本地模型使用相同目标画幅、提示词和 Seed。每个本地模型在同一画幅使用固定尺寸。MiniMax 使用约 16.8 MP，Qwen-Image 2.1 使用原生 2K 预设，其余本地模型使用约 1 MP。宽高按 32 像素对齐，实际比例可能略有偏差。GPT 生图是同提示词的闭源参考，Seed 和生成参数未提供。每张图片的实际尺寸见表格和元信息。</p>
       <details>
         <summary>各模型的分辨率建议</summary>
         <dl>
